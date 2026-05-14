@@ -1,26 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── Theme tokens ────────────────────────────────────────────────────────── */
+:root,
+[data-theme="day"] {
+  --bg:           #F5ECD7;
+  --bg-subtle:    #EDE0C4;
+  --bg-card:      #FAF3E4;
+  --border:       #D9C9A8;
+  --text:         #2C1A0E;
+  --text-muted:   #7A5C3A;
+  --text-faint:   #A68B60;
+  --accent:       #8B4513;
+  --accent-hover: #703610;
+  --accent-soft:  #F0E2CB;
+  --nav-bg:       rgba(245, 236, 215, 0.92);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+[data-theme="night"] {
+  --bg:           #151008;
+  --bg-subtle:    #1E1610;
+  --bg-card:      #1A1209;
+  --border:       #2E2218;
+  --text:         #D4C4A8;
+  --text-muted:   #8B7355;
+  --text-faint:   #5C4A35;
+  --accent:       #C4956A;
+  --accent-hover: #D4A57A;
+  --accent-soft:  #241A0E;
+  --nav-bg:       rgba(21, 16, 8, 0.92);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base ────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: 18px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  line-height: 1.7;
+  min-height: 100dvh;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* ─── Typography ─────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+/* ─── Reading prose ──────────────────────────────────────────────────────── */
+.prose-reader {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--text);
+  max-width: 68ch;
+}
+
+.prose-reader p {
+  margin-bottom: 1.4em;
+  text-indent: 1.5em;
+}
+
+.prose-reader p:first-of-type { text-indent: 0; }
+
+.prose-reader h1, .prose-reader h2, .prose-reader h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+  text-indent: 0;
+  font-weight: 500;
+}
+
+.prose-reader h2 { font-size: 1.5rem; }
+.prose-reader h3 { font-size: 1.25rem; }
+
+.prose-reader blockquote {
+  border-left: 2px solid var(--border);
+  padding-left: 1.25rem;
+  margin: 1.5em 0;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.prose-reader ul, .prose-reader ol { padding-left: 1.5em; margin-bottom: 1.4em; }
+.prose-reader li { margin-bottom: 0.4em; }
+.prose-reader hr { border: none; border-top: 1px solid var(--border); margin: 2.5em auto; width: 40%; }
+.prose-reader strong { font-weight: 600; }
+.prose-reader em { font-style: italic; }
+
+/* ─── TipTap Editor ──────────────────────────────────────────────────────── */
+.tiptap-editor .ProseMirror {
+  outline: none;
+  min-height: 60vh;
+  padding: 1.5rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--text);
+}
+
+.tiptap-editor .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: var(--text-faint);
+  pointer-events: none;
+  float: left;
+  height: 0;
+}
+
+.tiptap-editor .ProseMirror p { margin-bottom: 1em; }
+.tiptap-editor .ProseMirror h2 { font-size: 1.4rem; margin: 1.5em 0 0.5em; font-family: 'Cormorant Garamond', serif; }
+.tiptap-editor .ProseMirror h3 { font-size: 1.2rem; margin: 1.25em 0 0.5em; font-family: 'Cormorant Garamond', serif; }
+.tiptap-editor .ProseMirror blockquote { border-left: 2px solid var(--border); padding-left: 1rem; color: var(--text-muted); font-style: italic; margin: 1em 0; }
+.tiptap-editor .ProseMirror ul { list-style: disc; padding-left: 1.5em; }
+.tiptap-editor .ProseMirror ol { list-style: decimal; padding-left: 1.5em; }
+.tiptap-editor .ProseMirror hr { border: none; border-top: 1px solid var(--border); margin: 1.5em 0; }
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ─── Utility classes ────────────────────────────────────────────────────── */
+.bg-base        { background-color: var(--bg); }
+.bg-subtle      { background-color: var(--bg-subtle); }
+.bg-card        { background-color: var(--bg-card); }
+.border-base    { border-color: var(--border); }
+.text-base      { color: var(--text); }
+.text-muted-c   { color: var(--text-muted); }
+.text-faint-c   { color: var(--text-faint); }
+.text-accent-c  { color: var(--accent); }
+.bg-accent-c    { background-color: var(--accent); }
+.bg-accent-soft { background-color: var(--accent-soft); }
