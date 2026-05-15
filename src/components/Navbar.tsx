@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { toggleTheme } from '@/lib/theme'
-import { Sun, Moon, Menu, X } from 'lucide-react'
+import { Sun, Moon, Menu, X, PenLine } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
@@ -85,10 +85,27 @@ export function Navbar() {
           >
             {theme === 'day' ? <Moon size={16} /> : <Sun size={16} />}
           </button>
+
+          <Link
+            href="/admin"
+            aria-label="Admin panel"
+            className="p-1.5 rounded-full transition-colors hover:opacity-80"
+            style={{ color: 'var(--text-faint)' }}
+            title="Admin"
+          >
+            <PenLine size={15} />
+          </Link>
         </div>
 
         {/* Mobile controls */}
         <div className="flex sm:hidden items-center gap-3">
+          <Link
+            href="/admin"
+            aria-label="Admin panel"
+            style={{ color: 'var(--text-faint)' }}
+          >
+            <PenLine size={15} />
+          </Link>
           <button
             onClick={handleToggle}
             aria-label="Toggle theme"
