@@ -40,10 +40,10 @@ export default async function HomePage() {
   return (
     <PublicLayout>
       <div className="max-w-3xl mx-auto px-5 py-10">
-        {/* Hero wordmark */}
-        <div className="text-center mb-12">
+        {/* Hero wordmark — mobile only */}
+        <div className="text-center mb-12 sm:hidden">
           <h1
-            className="text-5xl sm:text-6xl mb-3"
+            className="text-5xl mb-3"
             style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--text)' }}
           >
             TJ Publishing House
