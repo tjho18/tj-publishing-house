@@ -1,34 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
-/* ─── Theme tokens ────────────────────────────────────────────────────────── */
+/* ─── Theme tokens — Kindle Paperwhite palette ───────────────────────────── */
 :root,
 [data-theme="day"] {
-  --bg:           #F5ECD7;
-  --bg-subtle:    #EDE0C4;
-  --bg-card:      #FAF3E4;
-  --border:       #D9C9A8;
-  --text:         #2C1A0E;
-  --text-muted:   #7A5C3A;
-  --text-faint:   #A68B60;
-  --accent:       #8B4513;
-  --accent-hover: #703610;
-  --accent-soft:  #F0E2CB;
-  --nav-bg:       rgba(245, 236, 215, 0.92);
+  /* Neutral off-white — colour stays out of your way */
+  --bg:           #F7F4EF;
+  --bg-subtle:    #F0EDE7;
+  --bg-card:      #FAFAF7;
+  --border:       #E4DFD8;
+  --text:         #28231E;
+  --text-muted:   #6B635A;
+  --text-faint:   #9B938A;
+  /* Accent = deeper shade of text, not a separate hue */
+  --accent:       #3D3530;
+  --accent-hover: #28231E;
+  --accent-soft:  #EDEAE4;
+  --nav-bg:       rgba(247, 244, 239, 0.94);
 }
 
 [data-theme="night"] {
-  --bg:           #151008;
-  --bg-subtle:    #1E1610;
-  --bg-card:      #1A1209;
-  --border:       #2E2218;
-  --text:         #D4C4A8;
-  --text-muted:   #8B7355;
-  --text-faint:   #5C4A35;
-  --accent:       #C4956A;
-  --accent-hover: #D4A57A;
-  --accent-soft:  #241A0E;
-  --nav-bg:       rgba(21, 16, 8, 0.92);
+  /* Warm charcoal — no blue, easy on eyes */
+  --bg:           #1A1816;
+  --bg-subtle:    #211F1C;
+  --bg-card:      #1E1C1A;
+  --border:       #2E2B27;
+  --text:         #D6D1C8;
+  --text-muted:   #8A837A;
+  --text-faint:   #5C5650;
+  --accent:       #B5AFA8;
+  --accent-hover: #D6D1C8;
+  --accent-soft:  #252220;
+  --nav-bg:       rgba(26, 24, 22, 0.94);
 }
 
 /* ─── Base ────────────────────────────────────────────────────────────────── */
@@ -46,7 +49,7 @@ body {
   font-family: 'Lora', Georgia, 'Times New Roman', serif;
   line-height: 1.7;
   min-height: 100dvh;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition: background-color 0.35s ease, color 0.35s ease;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -64,7 +67,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.05rem;
   line-height: 1.9;
   color: var(--text);
-  max-width: 68ch;
+  max-width: 66ch;
 }
 
 .prose-reader p {
@@ -73,6 +76,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .prose-reader p:first-of-type { text-indent: 0; }
+
+/* Drop cap on first letter of opening paragraph */
+.prose-reader p:first-of-type::first-letter {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 4.2em;
+  font-weight: 300;
+  line-height: 0.78;
+  float: left;
+  margin-right: 0.07em;
+  margin-top: 0.06em;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
 
 .prose-reader h1, .prose-reader h2, .prose-reader h3 {
   font-family: 'Cormorant Garamond', Georgia, serif;
@@ -86,7 +102,7 @@ h1, h2, h3, h4, h5, h6 {
 .prose-reader h3 { font-size: 1.25rem; }
 
 .prose-reader blockquote {
-  border-left: 2px solid var(--border);
+  border-left: 1px solid var(--border);
   padding-left: 1.25rem;
   margin: 1.5em 0;
   color: var(--text-muted);
@@ -95,9 +111,27 @@ h1, h2, h3, h4, h5, h6 {
 
 .prose-reader ul, .prose-reader ol { padding-left: 1.5em; margin-bottom: 1.4em; }
 .prose-reader li { margin-bottom: 0.4em; }
-.prose-reader hr { border: none; border-top: 1px solid var(--border); margin: 2.5em auto; width: 40%; }
+.prose-reader hr {
+  border: none;
+  text-align: center;
+  margin: 2.5em 0;
+  color: var(--text-faint);
+  letter-spacing: 0.4em;
+}
+.prose-reader hr::after { content: '· · ·'; font-family: 'Lora', serif; }
 .prose-reader strong { font-weight: 600; }
 .prose-reader em { font-style: italic; }
+
+/* ─── Reading progress bar ───────────────────────────────────────────────── */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background-color: var(--text-faint);
+  z-index: 60;
+  transition: width 0.1s linear, opacity 0.3s ease;
+}
 
 /* ─── TipTap Editor ──────────────────────────────────────────────────────── */
 .tiptap-editor .ProseMirror {
@@ -121,15 +155,15 @@ h1, h2, h3, h4, h5, h6 {
 .tiptap-editor .ProseMirror p { margin-bottom: 1em; }
 .tiptap-editor .ProseMirror h2 { font-size: 1.4rem; margin: 1.5em 0 0.5em; font-family: 'Cormorant Garamond', serif; }
 .tiptap-editor .ProseMirror h3 { font-size: 1.2rem; margin: 1.25em 0 0.5em; font-family: 'Cormorant Garamond', serif; }
-.tiptap-editor .ProseMirror blockquote { border-left: 2px solid var(--border); padding-left: 1rem; color: var(--text-muted); font-style: italic; margin: 1em 0; }
+.tiptap-editor .ProseMirror blockquote { border-left: 1px solid var(--border); padding-left: 1rem; color: var(--text-muted); font-style: italic; margin: 1em 0; }
 .tiptap-editor .ProseMirror ul { list-style: disc; padding-left: 1.5em; }
 .tiptap-editor .ProseMirror ol { list-style: decimal; padding-left: 1.5em; }
 .tiptap-editor .ProseMirror hr { border: none; border-top: 1px solid var(--border); margin: 1.5em 0; }
 
 /* ─── Scrollbar ──────────────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
 /* ─── Utility classes ────────────────────────────────────────────────────── */
 .bg-base        { background-color: var(--bg); }

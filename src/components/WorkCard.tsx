@@ -13,11 +13,11 @@ export function WorkCard({ work, variant = 'grid' }: WorkCardProps) {
     return (
       <Link href={`/read/${work.slug}`} className="block group">
         <div
-          className="rounded-2xl overflow-hidden border flex flex-col sm:flex-row gap-0 transition-shadow hover:shadow-lg"
+          className="rounded-2xl overflow-hidden border flex flex-col sm:flex-row transition-opacity hover:opacity-90 active:opacity-75"
           style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-card)' }}
         >
           {/* Cover */}
-          <div className="relative w-full sm:w-52 h-56 sm:h-auto shrink-0">
+          <div className="relative w-full sm:w-44 h-52 sm:h-auto shrink-0">
             {work.cover_image_url ? (
               <Image
                 src={work.cover_image_url}
@@ -28,12 +28,12 @@ export function WorkCard({ work, variant = 'grid' }: WorkCardProps) {
               />
             ) : (
               <div
-                className="w-full h-full flex items-end p-4"
-                style={{ backgroundColor: 'var(--accent-soft)' }}
+                className="w-full h-full flex items-end p-5"
+                style={{ backgroundColor: 'var(--bg-subtle)' }}
               >
                 <span
-                  className="text-4xl font-display leading-none opacity-30"
-                  style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--accent)' }}
+                  className="text-6xl leading-none opacity-15"
+                  style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--text)' }}
                 >
                   {work.title.charAt(0)}
                 </span>
@@ -42,37 +42,35 @@ export function WorkCard({ work, variant = 'grid' }: WorkCardProps) {
           </div>
 
           {/* Info */}
-          <div className="p-6 flex flex-col justify-between gap-4">
+          <div className="p-6 sm:p-7 flex flex-col justify-between gap-3">
             <div>
               <span
-                className="text-xs uppercase tracking-widest font-medium mb-2 block"
-                style={{ fontFamily: "'Inter', sans-serif", color: 'var(--accent)' }}
+                className="text-xs uppercase tracking-widest mb-2.5 block"
+                style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)' }}
               >
                 {workTypeLabel(work.type)} · Featured
               </span>
               <h2
-                className="text-3xl sm:text-4xl mb-3 group-hover:opacity-80 transition-opacity"
-                style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--text)' }}
+                className="text-3xl sm:text-4xl mb-3 leading-tight"
+                style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--text)', fontWeight: 400 }}
               >
                 {work.title}
               </h2>
               {work.description && (
                 <p
-                  className="text-sm leading-relaxed line-clamp-4"
+                  className="text-sm leading-relaxed line-clamp-3"
                   style={{ color: 'var(--text-muted)', fontFamily: "'Lora', serif" }}
                 >
                   {work.description}
                 </p>
               )}
             </div>
-            <div>
-              <span
-                className="text-xs"
-                style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)' }}
-              >
-                {formatDate(work.created_at)}
-              </span>
-            </div>
+            <span
+              className="text-xs"
+              style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)' }}
+            >
+              {formatDate(work.created_at)}
+            </span>
           </div>
         </div>
       </Link>
@@ -80,23 +78,23 @@ export function WorkCard({ work, variant = 'grid' }: WorkCardProps) {
   }
 
   return (
-    <Link href={`/read/${work.slug}`} className="block group">
+    <Link href={`/read/${work.slug}`} className="block group active:opacity-70 transition-opacity">
       <div
-        className="rounded-xl border overflow-hidden transition-shadow hover:shadow-md h-full flex flex-col"
+        className="rounded-xl border overflow-hidden h-full flex flex-col"
         style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-card)' }}
       >
-        {/* Cover */}
-        <div className="relative w-full aspect-[2/3]">
+        {/* Cover — taller on mobile for thumb browsing */}
+        <div className="relative w-full aspect-[3/4]">
           {work.cover_image_url ? (
             <Image src={work.cover_image_url} alt={work.title} fill className="object-cover" />
           ) : (
             <div
-              className="w-full h-full flex items-end p-4"
-              style={{ backgroundColor: 'var(--accent-soft)' }}
+              className="w-full h-full flex items-end p-3"
+              style={{ backgroundColor: 'var(--bg-subtle)' }}
             >
               <span
-                className="text-6xl leading-none opacity-20"
-                style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--accent)' }}
+                className="text-5xl leading-none opacity-10"
+                style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--text)' }}
               >
                 {work.title.charAt(0)}
               </span>
@@ -104,34 +102,20 @@ export function WorkCard({ work, variant = 'grid' }: WorkCardProps) {
           )}
         </div>
 
-        {/* Info */}
-        <div className="p-4 flex flex-col gap-1.5 flex-1">
+        {/* Info — compact, readable on small screens */}
+        <div className="p-3 flex flex-col gap-1 flex-1">
           <span
             className="text-xs uppercase tracking-widest"
-            style={{ fontFamily: "'Inter', sans-serif", color: 'var(--accent)' }}
+            style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)', fontSize: '0.6rem' }}
           >
             {workTypeLabel(work.type)}
           </span>
           <h3
-            className="text-lg leading-snug group-hover:opacity-75 transition-opacity"
-            style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--text)' }}
+            className="text-base leading-snug"
+            style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--text)', fontWeight: 400, fontSize: '1.05rem' }}
           >
             {work.title}
           </h3>
-          {work.description && (
-            <p
-              className="text-xs leading-relaxed line-clamp-2 mt-0.5"
-              style={{ color: 'var(--text-muted)', fontFamily: "'Lora', serif" }}
-            >
-              {work.description}
-            </p>
-          )}
-          <span
-            className="text-xs mt-auto pt-2"
-            style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)' }}
-          >
-            {formatDate(work.created_at)}
-          </span>
         </div>
       </div>
     </Link>
