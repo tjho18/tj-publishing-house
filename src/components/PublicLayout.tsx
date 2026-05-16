@@ -1,4 +1,5 @@
 import { Navbar } from './Navbar'
+import { SubscribeBar } from './reader/SubscribeBar'
 
 export function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -17,6 +18,7 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
       >
         © {new Date().getFullYear()} TJ Publishing House · All rights reserved
       </footer>
+      <SubscribeBar />
     </div>
   )
 }

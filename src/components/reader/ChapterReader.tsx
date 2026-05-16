@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ChevronLeft, ChevronRight, Bookmark, Share2, ArrowLeft, Clock } from 'lucide-react'
 import { Chapter, Work } from '@/lib/types'
+import { WorkCard } from '@/components/WorkCard'
+import { workTypeLabel } from '@/lib/utils'
 import { generateHTML } from '@tiptap/html'
 import StarterKit from '@tiptap/starter-kit'
 import { Typography } from '@tiptap/extension-typography'
@@ -16,6 +18,7 @@ interface Props {
   chapter: Chapter
   prevChapter: Chapter | null
   nextChapter: Chapter | null
+  suggestedWorks?: Work[]
 }
 
 function getBookmarkKey(workSlug: string) {
@@ -28,7 +31,7 @@ function estimateReadingTime(html: string): number {
   return Math.max(1, Math.round(words / 250))
 }
 
-export function ChapterReader({ work, chapter, prevChapter, nextChapter }: Props) {
+export function ChapterReader({ work, chapter, prevChapter, nextChapter, suggestedWorks = [] }: Props) {
   const router = useRouter()
   const [bookmarked, setBookmarked] = useState(false)
   const [shared, setShared] = useState(false)
@@ -239,13 +242,30 @@ export function ChapterReader({ work, chapter, prevChapter, nextChapter }: Props
             }}
           />
 
-          {/* Keyboard hint — desktop only, fades after mount */}
+          {/* Keyboard hint — desktop only */}
           <p
             className="hidden sm:block text-center mt-16 text-xs select-none"
             style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)', letterSpacing: '0.04em' }}
           >
             ← → arrow keys to navigate · B to bookmark
           </p>
+
+          {/* What to Read Next — shown on last chapter */}
+          {suggestedWorks.length > 0 && (
+            <div className="mt-20 pt-10 border-t" style={{ borderColor: 'var(--border)' }}>
+              <p
+                className="text-center text-xs uppercase tracking-widest mb-8"
+                style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)' }}
+              >
+                What to read next
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 not-prose">
+                {suggestedWorks.map(w => (
+                  <WorkCard key={w.id} work={w} />
+                ))}
+              </div>
+            </div>
+          )}
         </article>
       </main>
 

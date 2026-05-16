@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Plus, Pencil } from 'lucide-react'
 import { DeleteWorkButton } from '@/components/admin/DeleteWorkButton'
+import { DocumentImport } from '@/components/admin/DocumentImport'
 
 interface Props {
   params: Promise<{ id: string }>
@@ -147,6 +148,11 @@ export default async function WorkEditPage({ params }: Props) {
               ))}
             </ol>
           )}
+
+          {/* Document import */}
+          <div className="mt-4">
+            <DocumentImport workId={id} />
+          </div>
         </section>
       </div>
     </AdminLayout>

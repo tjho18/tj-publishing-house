@@ -3,12 +3,13 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import { BookOpen, PenSquare, LogOut, Home } from 'lucide-react'
+import { BookOpen, PenSquare, LogOut, Home, Settings } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: Home, exact: true },
   { href: '/admin/works/new', label: 'New Work', icon: PenSquare, exact: false },
+  { href: '/admin/settings', label: 'Settings', icon: Settings, exact: false },
 ]
 
 export function AdminLayout({ children }: { children: React.ReactNode }) {

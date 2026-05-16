@@ -3,7 +3,8 @@ import { AdminLayout } from '@/components/admin/AdminLayout'
 import { Work } from '@/lib/types'
 import { workTypeLabel, formatDate } from '@/lib/utils'
 import Link from 'next/link'
-import { Plus, Pencil, Eye, EyeOff } from 'lucide-react'
+import { Plus, Pencil, Eye } from 'lucide-react'
+import { OneClickPublish } from '@/components/admin/OneClickPublish'
 
 export default async function AdminDashboard() {
   const supabase = await createClient()
@@ -151,14 +152,19 @@ export default async function AdminDashboard() {
               </div>
 
               {/* Actions */}
-              <div className="flex items-center gap-2 shrink-0">
+              <div className="flex items-center gap-2 shrink-0 flex-wrap justify-end">
+                <OneClickPublish
+                  workId={work.id}
+                  currentStatus={work.status}
+                  wasPublished={work.status === 'published'}
+                />
                 {work.status === 'published' && (
                   <Link
                     href={`/read/${work.slug}`}
                     target="_blank"
                     className="p-1.5 rounded-md hover:opacity-70 transition-opacity"
                     style={{ color: 'var(--text-muted)' }}
-                    title="View"
+                    title="View live"
                   >
                     <Eye size={15} />
                   </Link>
