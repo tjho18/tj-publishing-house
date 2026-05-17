@@ -1,14 +1,23 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { BookOpen, FileText, Feather } from 'lucide-react'
 import { Work } from '@/lib/types'
 import { workTypeLabel, formatDate } from '@/lib/utils'
 
 interface WorkCardProps {
   work: Work
-  variant?: 'grid' | 'featured'
+  variant?: 'grid' | 'featured' | 'list'
 }
 
+const typeIcon = {
+  novel: BookOpen,
+  story: FileText,
+  essay: Feather,
+} as const
+
 export function WorkCard({ work, variant = 'grid' }: WorkCardProps) {
+
+  /* ─── Featured variant ───────────────────────────────────────────── */
   if (variant === 'featured') {
     return (
       <Link href={`/read/${work.slug}`} className="block group">
@@ -77,13 +86,61 @@ export function WorkCard({ work, variant = 'grid' }: WorkCardProps) {
     )
   }
 
+  /* ─── List variant (Figma-style) ─────────────────────────────────── */
+  if (variant === 'list') {
+    const Icon = typeIcon[work.type as keyof typeof typeIcon] ?? BookOpen
+    return (
+      <Link href={`/read/${work.slug}`} className="block group">
+        <div
+          className="rounded-xl border p-5 h-full flex flex-col gap-3 transition-opacity hover:opacity-80 active:opacity-60"
+          style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-card)' }}
+        >
+          {/* Type icon */}
+          <div
+            className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
+            style={{ backgroundColor: 'var(--border)' }}
+          >
+            <Icon size={16} style={{ color: 'var(--text-faint)' }} />
+          </div>
+
+          {/* Meta: type · date */}
+          <p
+            className="text-xs uppercase tracking-widest"
+            style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)' }}
+          >
+            {workTypeLabel(work.type)} · {formatDate(work.created_at)}
+          </p>
+
+          {/* Title */}
+          <h3
+            className="text-xl sm:text-2xl leading-snug"
+            style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--text)', fontWeight: 400 }}
+          >
+            {work.title}
+          </h3>
+
+          {/* Description */}
+          {work.description && (
+            <p
+              className="text-sm leading-relaxed line-clamp-3 flex-1"
+              style={{ fontFamily: "'Lora', serif", color: 'var(--text-muted)' }}
+            >
+              {work.description}
+            </p>
+          )}
+        </div>
+      </Link>
+    )
+  }
+
+  /* ─── Grid variant (small card) ──────────────────────────────────── */
   return (
     <Link href={`/read/${work.slug}`} className="block group active:opacity-70 transition-opacity">
       <div
         className="rounded-xl border overflow-hidden h-full flex flex-col"
         style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-card)' }}
       >
-        {/* Cover — taller on mobile for thumb browsing */}
+        {/* Cover */}
         <div className="relative w-full aspect-[3/4]">
           {work.cover_image_url ? (
             <Image src={work.cover_image_url} alt={work.title} fill className="object-cover" />
@@ -102,7 +159,7 @@ export function WorkCard({ work, variant = 'grid' }: WorkCardProps) {
           )}
         </div>
 
-        {/* Info — compact, readable on small screens */}
+        {/* Info */}
         <div className="p-3 flex flex-col gap-1 flex-1">
           <span
             className="text-xs uppercase tracking-widest"

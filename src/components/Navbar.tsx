@@ -8,9 +8,6 @@ import { Sun, Moon, Menu, X, PenLine } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
-  { href: '/novels', label: 'Novels' },
-  { href: '/stories', label: 'Stories' },
-  { href: '/essays', label: 'Essays' },
   { href: '/about', label: 'About' },
 ]
 
