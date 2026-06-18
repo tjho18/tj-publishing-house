@@ -73,10 +73,13 @@ export default async function AboutPage() {
         </div>
 
         {/* Links */}
-        <div className="flex items-center justify-center gap-6 mt-12 pt-10 border-t"
+        <div className="flex items-center justify-center gap-x-6 gap-y-3 flex-wrap mt-12 pt-10 border-t"
           style={{ borderColor: 'var(--border)' }}>
           {[
             { label: 'Substack', href: 'https://substack.com/@tjho' },
+            { label: 'Instagram', href: 'https://instagram.com/teajayho' },
+            { label: 'YouTube', href: 'https://www.youtube.com/@tj_ho' },
+            { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tj-ho-9654701b9/' },
             { label: 'GitHub', href: 'https://github.com/tjho18' },
           ].map(({ label, href }) => (
             <a
