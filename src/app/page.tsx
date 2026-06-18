@@ -119,21 +119,13 @@ export default async function HomePage({ searchParams }: Props) {
           })}
         </div>
 
-        {/* Works list */}
+        {/* Works — bookshelf grid */}
         {works.length > 0 ? (
-          typeFilter === 'comic' ? (
-            <div className="grid gap-4 grid-cols-2 sm:grid-cols-3">
-              {works.map(work => (
-                <WorkCard key={work.id} work={work} variant="comic" />
-              ))}
-            </div>
-          ) : (
-            <div className="border-t" style={{ borderColor: 'var(--border)' }}>
-              {works.map(work => (
-                <WorkCard key={work.id} work={work} variant="list" />
-              ))}
-            </div>
-          )
+          <div className="grid gap-4 sm:gap-5 grid-cols-2 sm:grid-cols-3">
+            {works.map(work => (
+              <WorkCard key={work.id} work={work} variant="grid" />
+            ))}
+          </div>
         ) : (
           !featured && (
             <div className="text-center py-24">
