@@ -105,10 +105,10 @@ export default async function HomePage({ searchParams }: Props) {
               <Link
                 key={tab.label}
                 href={tab.value ? `/?filter=${tab.value}` : '/'}
-                className="px-4 py-1.5 rounded-full text-sm transition-opacity hover:opacity-80"
+                className={`px-4 py-1.5 rounded-full text-sm transition-colors ${isActive ? '' : 'filter-tab'}`}
                 style={{
                   fontFamily: "'Inter', sans-serif",
-                  backgroundColor: isActive ? 'var(--text)' : 'transparent',
+                  backgroundColor: isActive ? 'var(--accent)' : 'transparent',
                   color: isActive ? 'var(--bg)' : 'var(--text-muted)',
                   border: `1px solid ${isActive ? 'transparent' : 'var(--border)'}`,
                 }}

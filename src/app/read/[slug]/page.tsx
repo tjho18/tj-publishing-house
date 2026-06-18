@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { PublicLayout } from '@/components/PublicLayout'
 import { Work, Chapter } from '@/lib/types'
-import { formatDate, workTypeLabel } from '@/lib/utils'
+import { formatDate, workTypeLabel, workBlurb, chapterTitle } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -129,12 +129,12 @@ export default async function WorkPage({ params }: Props) {
         </div>
 
         {/* Description */}
-        {work.description && (
+        {workBlurb(work.description, work.title) && (
           <p
             className="mb-10 leading-relaxed text-base"
-            style={{ fontFamily: "'Lora', serif", color: 'var(--text-muted)' }}
+            style={{ fontFamily: "'Lora', serif", color: 'var(--text-muted)', fontStyle: 'italic' }}
           >
-            {work.description}
+            {workBlurb(work.description, work.title)}
           </p>
         )}
 
@@ -173,7 +173,7 @@ export default async function WorkPage({ params }: Props) {
                         className="text-lg group-hover:opacity-70 transition-opacity"
                         style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--text)', fontWeight: 400 }}
                       >
-                        {chapter.title}
+                        {chapterTitle(chapter.title, chapter.order_num)}
                       </span>
                     </div>
                     <BookmarkButton workSlug={slug} chapterSlug={chapter.slug} chapterId={chapter.id} />

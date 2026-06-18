@@ -48,7 +48,7 @@ export default async function AboutPage() {
 
         {/* Bio */}
         <div
-          className="prose-reader mx-auto space-y-6"
+          className="prose-reader drop-cap mx-auto space-y-6"
           style={{ fontFamily: "'Lora', serif", fontSize: '1rem', lineHeight: '1.9', color: 'var(--text-muted)' }}
         >
           <p>

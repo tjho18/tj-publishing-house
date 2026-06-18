@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Work } from '@/lib/types'
-import { workTypeLabel, formatDate } from '@/lib/utils'
+import { workTypeLabel, formatDate, workBlurb } from '@/lib/utils'
 
 interface WorkCardProps {
   work: Work
@@ -62,10 +62,7 @@ export function WorkCard({ work, variant = 'grid' }: WorkCardProps) {
 
   /* ─── Featured variant — editorial hero ─────────────────────────────── */
   if (variant === 'featured') {
-    // Skip descriptions that are just the title echoed back (stale DB data)
-    const desc = work.description && !work.description.startsWith(work.title)
-      ? work.description
-      : null
+    const desc = workBlurb(work.description, work.title)
 
     return (
       <Link href={workHref(work)} className="block group">
@@ -129,9 +126,7 @@ export function WorkCard({ work, variant = 'grid' }: WorkCardProps) {
 
   /* ─── List variant — Medium-style horizontal ─────────────────────────── */
   if (variant === 'list') {
-    const desc = work.description && !work.description.startsWith(work.title)
-      ? work.description
-      : null
+    const desc = workBlurb(work.description, work.title)
 
     return (
       <Link

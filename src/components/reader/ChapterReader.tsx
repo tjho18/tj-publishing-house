@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { ChevronLeft, ChevronRight, Bookmark, Share2, ArrowLeft, Clock } from 'lucide-react'
 import { Chapter, Work } from '@/lib/types'
 import { WorkCard } from '@/components/WorkCard'
-import { workTypeLabel } from '@/lib/utils'
+import { workTypeLabel, workBlurb, chapterTitle } from '@/lib/utils'
 import { generateHTML } from '@tiptap/html'
 import StarterKit from '@tiptap/starter-kit'
 import { Typography } from '@tiptap/extension-typography'
@@ -208,30 +208,28 @@ export function ChapterReader({ work, chapter, prevChapter, nextChapter, suggest
 
           {/* Chapter heading */}
           <header className="text-center mb-12 pt-8">
-            {/* Eyebrow: show "Chapter N" only for multi-chapter novels */}
+            {/* Eyebrow: work title for multi-chapter works, else the type label */}
             <p
               className="text-xs uppercase tracking-widest mb-4"
               style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)' }}
             >
-              {work.type === 'novel' && totalChapters > 1
-                ? `Chapter ${chapter.order_num}`
-                : workTypeLabel(work.type)}
+              {totalChapters > 1 ? work.title : workTypeLabel(work.type)}
             </p>
 
             <h1
               className="text-3xl sm:text-4xl mb-3"
               style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--text)', fontWeight: 400 }}
             >
-              {chapter.title}
+              {totalChapters > 1 ? chapterTitle(chapter.title, chapter.order_num) : chapter.title}
             </h1>
 
             {/* Subtitle — show work description for single-chapter works */}
-            {totalChapters <= 1 && work.description && !work.description.startsWith(work.title) && (
+            {totalChapters <= 1 && workBlurb(work.description, work.title) && (
               <p
                 className="text-base leading-relaxed mb-4 max-w-sm mx-auto"
                 style={{ fontFamily: "'Lora', serif", color: 'var(--text-muted)', fontStyle: 'italic' }}
               >
-                {work.description}
+                {workBlurb(work.description, work.title)}
               </p>
             )}
 
@@ -253,6 +251,7 @@ export function ChapterReader({ work, chapter, prevChapter, nextChapter, suggest
 
           {/* Body */}
           <div
+            className="drop-cap"
             dangerouslySetInnerHTML={{
               __html: html || '<p style="color:var(--text-faint);text-align:center;text-indent:0">This chapter has no content yet.</p>'
             }}
@@ -306,7 +305,7 @@ export function ChapterReader({ work, chapter, prevChapter, nextChapter, suggest
               className="text-xs truncate"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              {prevChapter.title}
+              {chapterTitle(prevChapter.title, prevChapter.order_num)}
             </span>
           </Link>
         ) : (
@@ -338,7 +337,7 @@ export function ChapterReader({ work, chapter, prevChapter, nextChapter, suggest
               className="text-xs truncate"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              {nextChapter.title}
+              {chapterTitle(nextChapter.title, nextChapter.order_num)}
             </span>
             <ChevronRight size={16} className="shrink-0" />
           </Link>

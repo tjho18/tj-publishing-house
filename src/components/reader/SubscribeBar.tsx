@@ -130,10 +130,10 @@ export function SubscribeBar({ bottomOffset = 0 }: Props) {
               <button
                 type="submit"
                 disabled={state === 'loading'}
-                className="rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-80 disabled:opacity-50 shrink-0"
+                className="rounded-full px-4 py-2 text-sm font-medium transition-opacity hover:opacity-85 disabled:opacity-50 shrink-0"
                 style={{
                   fontFamily: "'Inter', sans-serif",
-                  backgroundColor: 'var(--text)',
+                  backgroundColor: 'var(--accent)',
                   color: 'var(--bg)',
                   fontSize: '0.8rem',
                 }}

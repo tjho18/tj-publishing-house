@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
-/* ─── Theme tokens — Kindle Paperwhite palette ───────────────────────────── */
+/* ─── Theme tokens — warm paper + soft sage accent ───────────────────────── */
 :root,
 [data-theme="day"] {
-  /* Neutral off-white — colour stays out of your way */
+  /* Warm off-white paper */
   --bg:           #F7F4EF;
   --bg-subtle:    #F0EDE7;
-  --bg-card:      #FAFAF7;
+  --bg-card:      #FCFBF8;
   --border:       #E4DFD8;
   --text:         #28231E;
   --text-muted:   #6B635A;
   --text-faint:   #9B938A;
-  /* Accent = deeper shade of text, not a separate hue */
-  --accent:       #3D3530;
-  --accent-hover: #28231E;
-  --accent-soft:  #EDEAE4;
-  --nav-bg:       rgba(247, 244, 239, 0.94);
+  /* Soft sage accent — friendly, bookish */
+  --accent:       #51694D;
+  --accent-hover: #405539;
+  --accent-soft:  #E7EDE3;
+  --nav-bg:       rgba(247, 244, 239, 0.92);
 }
 
 [data-theme="night"] {
@@ -28,10 +28,17 @@
   --text:         #D6D1C8;
   --text-muted:   #8A837A;
   --text-faint:   #5C5650;
-  --accent:       #B5AFA8;
-  --accent-hover: #D6D1C8;
-  --accent-soft:  #252220;
-  --nav-bg:       rgba(26, 24, 22, 0.94);
+  /* Lighter sage for dark backgrounds */
+  --accent:       #9CB496;
+  --accent-hover: #B4C9AF;
+  --accent-soft:  #232B21;
+  --nav-bg:       rgba(26, 24, 22, 0.92);
+}
+
+/* Friendly text selection */
+::selection {
+  background-color: var(--accent-soft);
+  color: var(--text);
 }
 
 /* ─── Base ────────────────────────────────────────────────────────────────── */
@@ -77,8 +84,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .prose-reader p:first-of-type { text-indent: 0; }
 
-/* Drop cap on first letter of opening paragraph */
-.prose-reader p:first-of-type::first-letter {
+/* Drop cap — only on the opening paragraph of body content (.drop-cap),
+   never on header eyebrows or other prose paragraphs. */
+.drop-cap > p:first-of-type::first-letter {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 4.2em;
   font-weight: 300;
@@ -135,6 +143,21 @@ h1, h2, h3, h4, h5, h6 {
 .prose-reader hr::after { content: '· · ·'; font-family: 'Lora', serif; }
 .prose-reader strong { font-weight: 600; }
 .prose-reader em { font-style: italic; }
+.prose-reader a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: opacity 0.15s ease;
+}
+.prose-reader a:hover { opacity: 0.7; }
+
+/* ─── Friendly focus ring ────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
 
 /* ─── Reading progress bar ───────────────────────────────────────────────── */
 .reading-progress {
@@ -179,12 +202,19 @@ h1, h2, h3, h4, h5, h6 {
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 .card-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-  border-color: var(--text-faint) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(81, 105, 77, 0.10);
+  border-color: var(--accent) !important;
 }
 [data-theme="night"] .card-lift:hover {
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+/* ─── Filter tabs — friendly sage hover on inactive ─────────────────────── */
+.filter-tab:hover {
+  background-color: var(--accent-soft);
+  border-color: var(--accent-soft) !important;
+  color: var(--accent) !important;
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────────────────────── */
