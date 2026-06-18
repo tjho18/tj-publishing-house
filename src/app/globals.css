@@ -91,15 +91,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .prose-reader h1, .prose-reader h2, .prose-reader h3 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  margin-top: 2em;
-  margin-bottom: 0.75em;
   text-indent: 0;
-  font-weight: 500;
 }
 
-.prose-reader h2 { font-size: 1.5rem; }
-.prose-reader h3 { font-size: 1.25rem; }
+/* Section headings — elegant centered dividers */
+.prose-reader h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.25em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  margin-top: 3.5em;
+  margin-bottom: 2.5em;
+}
+
+.prose-reader h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
 
 .prose-reader blockquote {
   border-left: 1px solid var(--border);

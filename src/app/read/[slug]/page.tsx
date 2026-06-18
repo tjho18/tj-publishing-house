@@ -141,56 +141,54 @@ export default async function WorkPage({ params }: Props) {
         {/* Divider */}
         <hr style={{ borderColor: 'var(--border)' }} className="mb-8" />
 
-        {/* Chapter list (for novels) */}
-        {work.type === 'novel' && (
+        {/* Chapter list — only show for multi-chapter novels */}
+        {work.type === 'novel' && publishedChapters.length > 1 && (
           <section>
             <h2
-              className="text-xl mb-5"
-              style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--text)' }}
+              className="text-base uppercase tracking-widest mb-5"
+              style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)', fontWeight: 400 }}
             >
               Chapters
-              <span
-                className="text-sm ml-2 font-normal"
-                style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)' }}
-              >
+              <span className="ml-2 normal-case tracking-normal">
                 ({publishedChapters.length})
               </span>
             </h2>
 
-            {publishedChapters.length === 0 ? (
-              <p style={{ color: 'var(--text-faint)', fontFamily: "'Inter', sans-serif", fontSize: '0.875rem' }}>
-                No chapters published yet. Check back soon.
-              </p>
-            ) : (
-              <ol className="space-y-0">
-                {publishedChapters.map((chapter, i) => (
-                  <li key={chapter.id}>
-                    <Link
-                      href={`/read/${slug}/${chapter.slug}`}
-                      className="flex items-center gap-4 py-3.5 border-b group transition-opacity hover:opacity-80"
-                      style={{ borderColor: 'var(--border)' }}
+            <ol className="space-y-0">
+              {publishedChapters.map((chapter, i) => (
+                <li key={chapter.id}>
+                  <Link
+                    href={`/read/${slug}/${chapter.slug}`}
+                    className="flex items-center gap-4 py-4 border-b group"
+                    style={{ borderColor: 'var(--border)' }}
+                  >
+                    <span
+                      className="text-sm w-7 shrink-0 text-right tabular-nums"
+                      style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)' }}
                     >
+                      {i + 1}
+                    </span>
+                    <div className="flex-1">
                       <span
-                        className="text-sm w-7 shrink-0 text-right"
-                        style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)' }}
+                        className="text-lg group-hover:opacity-70 transition-opacity"
+                        style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--text)', fontWeight: 400 }}
                       >
-                        {i + 1}
+                        {chapter.title}
                       </span>
-                      <div className="flex-1">
-                        <span
-                          className="text-base group-hover:underline underline-offset-2"
-                          style={{ fontFamily: "'Lora', serif", color: 'var(--text)' }}
-                        >
-                          {chapter.title}
-                        </span>
-                      </div>
-                      <BookmarkButton workSlug={slug} chapterSlug={chapter.slug} chapterId={chapter.id} />
-                    </Link>
-                  </li>
-                ))}
-              </ol>
-            )}
+                    </div>
+                    <BookmarkButton workSlug={slug} chapterSlug={chapter.slug} chapterId={chapter.id} />
+                  </Link>
+                </li>
+              ))}
+            </ol>
           </section>
+        )}
+
+        {/* No chapters yet */}
+        {work.type === 'novel' && publishedChapters.length === 0 && (
+          <p style={{ color: 'var(--text-faint)', fontFamily: "'Inter', sans-serif", fontSize: '0.875rem' }}>
+            No chapters published yet. Check back soon.
+          </p>
         )}
       </div>
     </PublicLayout>

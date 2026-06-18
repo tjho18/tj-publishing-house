@@ -19,6 +19,7 @@ interface Props {
   prevChapter: Chapter | null
   nextChapter: Chapter | null
   suggestedWorks?: Work[]
+  totalChapters?: number
 }
 
 function getBookmarkKey(workSlug: string) {
@@ -31,7 +32,7 @@ function estimateReadingTime(html: string): number {
   return Math.max(1, Math.round(words / 250))
 }
 
-export function ChapterReader({ work, chapter, prevChapter, nextChapter, suggestedWorks = [] }: Props) {
+export function ChapterReader({ work, chapter, prevChapter, nextChapter, suggestedWorks = [], totalChapters = 1 }: Props) {
   const router = useRouter()
   const [bookmarked, setBookmarked] = useState(false)
   const [shared, setShared] = useState(false)
@@ -207,20 +208,35 @@ export function ChapterReader({ work, chapter, prevChapter, nextChapter, suggest
 
           {/* Chapter heading */}
           <header className="text-center mb-12 pt-8">
+            {/* Eyebrow: show "Chapter N" only for multi-chapter novels */}
             <p
-              className="text-xs uppercase tracking-widest mb-3"
+              className="text-xs uppercase tracking-widest mb-4"
               style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)' }}
             >
-              {work.type === 'novel' ? `Chapter ${chapter.order_num}` : work.title}
+              {work.type === 'novel' && totalChapters > 1
+                ? `Chapter ${chapter.order_num}`
+                : workTypeLabel(work.type)}
             </p>
+
             <h1
-              className="text-3xl sm:text-4xl mb-4"
+              className="text-3xl sm:text-4xl mb-3"
               style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--text)', fontWeight: 400 }}
             >
               {chapter.title}
             </h1>
+
+            {/* Subtitle — show work description for single-chapter works */}
+            {totalChapters <= 1 && work.description && !work.description.startsWith(work.title) && (
+              <p
+                className="text-base leading-relaxed mb-4 max-w-sm mx-auto"
+                style={{ fontFamily: "'Lora', serif", color: 'var(--text-muted)', fontStyle: 'italic' }}
+              >
+                {work.description}
+              </p>
+            )}
+
             {/* Reading time */}
-            <div className="flex items-center justify-center gap-1.5 mb-6">
+            <div className="flex items-center justify-center gap-1.5 mb-6 mt-3">
               <Clock size={11} style={{ color: 'var(--text-faint)' }} />
               <span
                 className="text-xs"
@@ -332,7 +348,7 @@ export function ChapterReader({ work, chapter, prevChapter, nextChapter, suggest
               className="text-xs italic"
               style={{ fontFamily: "'Lora', serif", color: 'var(--text-faint)' }}
             >
-              {work.type === 'novel' ? 'End of chapter' : 'Fin.'}
+              Fin.
             </span>
           </div>
         )}

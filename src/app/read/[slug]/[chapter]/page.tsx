@@ -75,6 +75,7 @@ export default async function ChapterPage({ params }: Props) {
         prevChapter={prevChapter}
         nextChapter={nextChapter}
         suggestedWorks={suggestedWorks}
+        totalChapters={chapters.length}
       />
       {/* Subscribe bar floats above the 56px chapter nav */}
       <SubscribeBar bottomOffset={56} />

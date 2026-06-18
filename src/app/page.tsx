@@ -92,7 +92,7 @@ export default async function HomePage({ searchParams }: Props) {
 
         {/* Featured work — only on "All Works" tab */}
         {!typeFilter && featured && (
-          <section className="mb-10">
+          <section className="mb-10 pb-10 border-b" style={{ borderColor: 'var(--border)' }}>
             <WorkCard work={featured} variant="featured" />
           </section>
         )}
@@ -119,13 +119,21 @@ export default async function HomePage({ searchParams }: Props) {
           })}
         </div>
 
-        {/* Works grid */}
+        {/* Works list */}
         {works.length > 0 ? (
-          <div className={`grid gap-4 ${typeFilter === 'comic' ? 'grid-cols-2 sm:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2'}`}>
-            {works.map(work => (
-              <WorkCard key={work.id} work={work} variant={typeFilter === 'comic' ? 'comic' : 'list'} />
-            ))}
-          </div>
+          typeFilter === 'comic' ? (
+            <div className="grid gap-4 grid-cols-2 sm:grid-cols-3">
+              {works.map(work => (
+                <WorkCard key={work.id} work={work} variant="comic" />
+              ))}
+            </div>
+          ) : (
+            <div className="border-t" style={{ borderColor: 'var(--border)' }}>
+              {works.map(work => (
+                <WorkCard key={work.id} work={work} variant="list" />
+              ))}
+            </div>
+          )
         ) : (
           !featured && (
             <div className="text-center py-24">
