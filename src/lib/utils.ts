@@ -27,6 +27,7 @@ export function workTypeLabel(type: string): string {
     novel: 'Novel',
     story: 'Short Story',
     essay: 'Essay',
+    comic: 'Comic',
   }
   return labels[type] ?? type
 }

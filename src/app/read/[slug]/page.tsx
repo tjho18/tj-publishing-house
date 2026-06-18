@@ -36,6 +36,12 @@ export default async function WorkPage({ params }: Props) {
 
   if (!work) notFound()
 
+  // Comics have their own reader
+  if (work.type === 'comic') {
+    const { redirect } = await import('next/navigation')
+    redirect(`/comics/${slug}`)
+  }
+
   const { data: chapters } = await supabase
     .from('chapters')
     .select('id, title, slug, order_num, status, created_at')

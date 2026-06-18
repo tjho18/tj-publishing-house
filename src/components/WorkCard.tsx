@@ -6,23 +6,78 @@ import { workTypeLabel, formatDate } from '@/lib/utils'
 
 interface WorkCardProps {
   work: Work
-  variant?: 'grid' | 'featured' | 'list'
+  variant?: 'grid' | 'featured' | 'list' | 'comic'
 }
 
 const typeIcon = {
   novel: BookOpen,
   story: FileText,
   essay: Feather,
+  comic: BookOpen,
 } as const
 
+function workHref(work: Work): string {
+  return work.type === 'comic' ? `/comics/${work.slug}` : `/read/${work.slug}`
+}
+
 export function WorkCard({ work, variant = 'grid' }: WorkCardProps) {
+  // Auto-promote comic works to comic variant
+  if (work.type === 'comic' && variant !== 'comic') {
+    variant = 'comic'
+  }
+
+  /* ─── Comic variant ──────────────────────────────────────────────── */
+  if (variant === 'comic') {
+    return (
+      <Link href={workHref(work)} className="block group">
+        <div
+          className="card-lift rounded-xl border overflow-hidden h-full flex flex-col"
+          style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-card)' }}
+        >
+          {/* First-page thumbnail */}
+          <div className="relative w-full aspect-[4/5] overflow-hidden bg-[var(--bg-subtle)]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`/comics/${work.slug}/page-01.jpg`}
+              alt={`${work.title} cover`}
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            />
+          </div>
+
+          {/* Info */}
+          <div className="p-4 flex flex-col gap-1.5">
+            <p
+              className="text-xs uppercase tracking-widest"
+              style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)' }}
+            >
+              Comic · {formatDate(work.created_at)}
+            </p>
+            <h3
+              className="text-xl leading-snug"
+              style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--text)', fontWeight: 400 }}
+            >
+              {work.title}
+            </h3>
+            {work.page_count && (
+              <p
+                className="text-xs"
+                style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)' }}
+              >
+                {work.page_count} pages
+              </p>
+            )}
+          </div>
+        </div>
+      </Link>
+    )
+  }
 
   /* ─── Featured variant ───────────────────────────────────────────── */
   if (variant === 'featured') {
     return (
-      <Link href={`/read/${work.slug}`} className="block group">
+      <Link href={workHref(work)} className="block group">
         <div
-          className="rounded-2xl overflow-hidden border flex flex-col sm:flex-row transition-opacity hover:opacity-90 active:opacity-75"
+          className="card-lift rounded-2xl overflow-hidden border flex flex-col sm:flex-row active:opacity-75"
           style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-card)' }}
         >
           {/* Cover */}
@@ -90,9 +145,9 @@ export function WorkCard({ work, variant = 'grid' }: WorkCardProps) {
   if (variant === 'list') {
     const Icon = typeIcon[work.type as keyof typeof typeIcon] ?? BookOpen
     return (
-      <Link href={`/read/${work.slug}`} className="block group">
+      <Link href={workHref(work)} className="block group">
         <div
-          className="rounded-xl border p-5 h-full flex flex-col gap-3 transition-opacity hover:opacity-80 active:opacity-60"
+          className="card-lift rounded-xl border p-5 h-full flex flex-col gap-3 active:opacity-60"
           style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-card)' }}
         >
           {/* Type icon */}
@@ -135,7 +190,7 @@ export function WorkCard({ work, variant = 'grid' }: WorkCardProps) {
 
   /* ─── Grid variant (small card) ──────────────────────────────────── */
   return (
-    <Link href={`/read/${work.slug}`} className="block group active:opacity-70 transition-opacity">
+    <Link href={workHref(work)} className="block group active:opacity-70 transition-opacity">
       <div
         className="rounded-xl border overflow-hidden h-full flex flex-col"
         style={{ borderColor: 'var(--border)', backgroundColor: 'var(--bg-card)' }}

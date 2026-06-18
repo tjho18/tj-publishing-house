@@ -160,6 +160,19 @@ h1, h2, h3, h4, h5, h6 {
 .tiptap-editor .ProseMirror ol { list-style: decimal; padding-left: 1.5em; }
 .tiptap-editor .ProseMirror hr { border: none; border-top: 1px solid var(--border); margin: 1.5em 0; }
 
+/* ─── Card hover ─────────────────────────────────────────────────────────── */
+.card-lift {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  border-color: var(--text-faint) !important;
+}
+[data-theme="night"] .card-lift:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+}
+
 /* ─── Scrollbar ──────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }

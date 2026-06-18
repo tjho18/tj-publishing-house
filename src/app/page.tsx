@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export const revalidate = 60
 
-const VALID_FILTERS = ['novel', 'story', 'essay'] as const
+const VALID_FILTERS = ['novel', 'story', 'essay', 'comic'] as const
 type TypeFilter = typeof VALID_FILTERS[number] | null
 
 interface Props {
@@ -59,6 +59,7 @@ const tabs = [
   { label: 'Novels', value: 'novel' },
   { label: 'Short Stories', value: 'story' },
   { label: 'Essays', value: 'essay' },
+  { label: 'Comics', value: 'comic' },
 ] as const
 
 export default async function HomePage({ searchParams }: Props) {
@@ -85,7 +86,7 @@ export default async function HomePage({ searchParams }: Props) {
             className="text-sm tracking-widest uppercase"
             style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-faint)' }}
           >
-            Novels · Stories · Essays
+            Novels · Stories · Essays · Comics
           </p>
         </div>
 
@@ -120,9 +121,9 @@ export default async function HomePage({ searchParams }: Props) {
 
         {/* Works grid */}
         {works.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className={`grid gap-4 ${typeFilter === 'comic' ? 'grid-cols-2 sm:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2'}`}>
             {works.map(work => (
-              <WorkCard key={work.id} work={work} variant="list" />
+              <WorkCard key={work.id} work={work} variant={typeFilter === 'comic' ? 'comic' : 'list'} />
             ))}
           </div>
         ) : (

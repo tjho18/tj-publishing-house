@@ -1,4 +1,4 @@
-export type WorkType = 'novel' | 'story' | 'essay'
+export type WorkType = 'novel' | 'story' | 'essay' | 'comic'
 export type WorkStatus = 'draft' | 'published'
 export type ChapterStatus = 'draft' | 'published'
 
@@ -9,6 +9,7 @@ export interface Work {
   type: WorkType
   description: string | null
   cover_image_url: string | null
+  page_count: number | null
   status: WorkStatus
   featured: boolean
   created_at: string
