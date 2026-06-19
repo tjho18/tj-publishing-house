@@ -47,7 +47,7 @@ function poemToDoc(raw: string): TipDoc {
 
 const STORIES: {
   title: string; slug: string; description: string
-  publishedAt: string; poem: boolean; type?: 'story' | 'novel'; content: string
+  publishedAt: string; poem: boolean; type?: 'story' | 'novel' | 'essay'; content: string
 }[] = [
   // ── 1. Hot Rock ─────────────────────────────────────────────────────────────
   {
@@ -2787,6 +2787,549 @@ As the flower was consuming him, Hinata laughed out loud.
 
 Damn this flower.`,
   },
+
+  // ══ ESSAYS — from Substack (tjho.substack.com) ════════════════════════════════
+
+  // ── E1. Who Is Actually Making Your Decisions? ────────────────────────────────
+  {
+    title: 'Who Is Actually Making Your Decisions?',
+    slug: 'who-is-actually-making-your-decisions',
+    description: 'Three forces — the state, the gene, and the human — quietly compete behind every choice you make. Learning to name them is how you take your life back.',
+    publishedAt: '2026-04-12T09:00:00Z',
+    poem: false,
+    type: 'essay' as const,
+    content: `Are you sure of what to do with your life? Most people aren't — and the reason runs deeper than indecision or laziness. We live in a constant friction between contradictory impulses: the pull toward animalistic drives rising from somewhere below conscious thought, and the press of societal forces shaping us from the outside. We feel the tension without being able to name it. We call it confusion, or a quarter-life crisis, or simply not knowing who we are. But the confusion has a structure, and once you can see that structure, the whole problem becomes easier to navigate.
+
+Behind every significant decision, there are three underlying forces — what we might rank from macro to micro: the state, the human, and the gene. Each has its own agenda. Each is, in a sense, selfish. And they disagree with each other constantly.
+
+## Force 1 — The State
+
+Country, religion, company, ideology. The state has its own goal — its own propagation, its own dominance — and it uses its human subjects to achieve that goal. You are not a citizen or employee so much as a vehicle for the state's continuation.
+
+## Force 2 — The Human
+
+You, as an independent entity, with intrinsic desires: to survive, to feel connected, to live a life that feels meaningful on your own terms. Not your country's terms. Yours.
+
+## Force 3 — The Gene
+
+The biological program running in your body, with one purpose: replicate itself. It cares about your reproduction and the survival of kin who share its code. It does not care about your happiness, your career, or your personal growth.
+
+These three forces are rarely in alignment, and the internal conflict they generate is what most people experience as confusion, anxiety, or the vague feeling of living someone else's life.
+
+## The State's Most Successful Con
+
+Consider the university pipeline. Every developed nation on earth needs a supply of researchers, engineers, doctors, and administrators to sustain its competitive position. So it builds a narrative: higher education is the path to a good life. Smart people go to university. Ambition means pursuing credentials. The Chinese version of this has crystallised into a proverb — everything else is low art; only the academic path has true purpose — but the Western version is functionally identical, just more expensive and slightly better dressed.
+
+The state's pitch is seductive precisely because it contains partial truth. A medical degree does open doors. A PhD does command respect. But the pitch is not made for your benefit. It is made because the state needs physicians and researchers, and the most efficient way to produce them is to convince young people that becoming one is their authentic aspiration, rather than an assignment they have been handed.
+
+What the state does not advertise: the pre-med student averaging five hours of sleep a night. The junior doctor performing fourteen consecutive hours of surgery in an environment of chronic, systemic stress. The late-career academic who built her entire identity around a discipline that has slowly drained her of the joy that drew her to it in the first place. At the breaking point, when no number of paychecks can justify the cost to the human inside the job, the state has a final tool: the sunk cost. You have already invested so much. Don't waste it. Stay a little longer.
+
+The sunk cost is not a reason. It is a trap. But it is extraordinarily effective, because the human mind is poorly designed to walk away from previous investment, even when that investment was made under false premises.
+
+The state doesn't need you to be happy. It needs you to be productive. These are not the same thing, and the state never promised they were.
+
+## The Gene's Hollow Promises
+
+The gene-level program is equally relentless and equally indifferent to human happiness. From a gene's-eye view — the framework Richard Dawkins articulated in The Selfish Gene — every organism exists as a vehicle for genetic replication. Your drives toward sex, status-competition, protection of family, and tribal loyalty all make sense when read as genetic strategies, even when they make no sense as personal ones.
+
+The gene's most obvious intrusion into human decision-making is the sex drive. In younger men especially, the genetic program toward sexual variety is extremely strong, and in a culture that has increasingly framed sexual freedom as personal liberation, the gene has found a perfect cover. It can dress itself as autonomy. But I know this from my own experience: following the genetic program of casual sex with multiple partners delivered what it promised — brief pleasure — and nothing it didn't. The emotional connection that sex inevitably creates in humans is not a bug in the genetic code. It is a feature. It binds people together for long enough to raise offspring. When you sever that connection repeatedly, you do not become free. You become progressively more depleted and emotionally numb, which serves the gene not at all and the human even less.
+
+The same logic applies to the status-competition drive. The gene wants its host to dominate the social hierarchy — more resources, more mates, more security for offspring. This is why prestige careers, luxury goods, and dominance displays feel compelling even to people who consciously reject them. The desire is genetic, not rational. And like the sex drive, it delivers partial satisfaction that never fully arrives, because the gene's target — absolute dominance — is by definition unachievable. There is always someone with more. The gene keeps you running; it never lets you win.
+
+## America's Expensive Experiment
+
+The United States is perhaps the most thorough real-world test of what happens when a state successfully programs its population to prioritize individual achievement, productivity, and economic output above communal bonds. The results are instructive.
+
+By material metrics, the American experiment has been extraordinary. The US produces the world's most powerful technology companies, the most globally influential media, the most aggressively innovative economy in human history. But the humans inside that economy are not thriving in proportion. Americans rank among the loneliest populations on earth — a paradox in a nation of dense megacities — with reported rates of social isolation climbing every decade. The massive entertainment industry, producing thousands of hours of film and television annually, has not been able to substitute for the absence of real human connection. No streaming service fills the space that a community once occupied.
+
+Meanwhile, nations that rank highly on subjective wellbeing studies are not necessarily the wealthiest. Bhutan, Nepal, and various northern European nations consistently outperform countries with far higher GDPs on measures of life satisfaction. A native African tribesman, when asked in a now-famous anecdote why he would not want to move to America, laughed: "To the country where people jump off buildings?" He was pointing, with more precision than most sociologists manage, at the disconnect between material development and human happiness that the American model has created. A society can be extraordinarily good at what the state needs while being quietly catastrophic for what its people need.
+
+## The Harvard Evidence
+
+The longest scientific study of happiness ever conducted — Harvard's Study of Adult Development, tracking 724 participants since 1938 — arrived at a conclusion that is both simple and systematically ignored by the states that shape our choices. Director Robert Waldinger's summary is blunt: "Loneliness kills. It's as powerful as smoking or alcoholism." Relationship quality at age 50 proved a better predictor of physical health at 80 than cholesterol levels. Genes mattered less to longevity than the warmth of a person's bonds. Not wealth. Not career success. Not academic achievement. Relationships.
+
+## So Which Voice Do You Follow?
+
+In my own experience, the human level — your actual needs as a person, independent of your genetic program and your state's agenda — is the most reliable guide. Not because the human self is always wise, but because the human self is the one that has to live with the outcomes.
+
+The gene's instructions feel urgent but prove hollow. The state's instructions feel meaningful but serve interests other than yours. The human's needs — for real connection, for meaningful work, for adequate rest, for community, for time that belongs to you — are the ones that, when met, produce a life that feels like yours.
+
+The practical question is how to hear the human voice over the noise of the other two. It requires developing a reflex for a specific type of question: who is behind this desire? When you feel the pull toward a career path, a purchase, a sexual conquest, or a particular lifestyle, pause long enough to identify the source. Is this what the state has been rewarding and celebrating around you? Is this the genetic program expressing itself in the vocabulary of modern culture? Or is this something you would want even if no one was watching, even if it granted you no status, even if your genes had no opinion?
+
+The answer, when you can find it honestly, tends to point toward something quieter and more durable than what the other two forces offer. Family. Deep friendships. Work that has personal meaning regardless of its prestige. Enough success to eliminate the anxiety of scarcity without so much ambition that you lose the life you were supposedly building toward. These are not glamorous recommendations. They will not go viral. But they are, across every culture and every data set that has been honest about the question, what the human self actually needs.
+
+_"The good life is built with good relationships." — Robert Waldinger, Harvard Study of Adult Development (85 years of data)_
+
+The three voices will not stop. The state will keep offering its bargains; the gene will keep generating its urgencies. But once you can name the source of a desire, you are no longer entirely at its mercy. You can evaluate it. You can choose which contracts are worth signing and which ones extract more than they return.
+
+The life that results from that kind of awareness is not perfect. But it is, at least, yours.`,
+  },
+
+  // ── E2. I Love Worshipping My Culture ─────────────────────────────────────────
+  {
+    title: 'I Love Worshipping My Culture',
+    slug: 'i-love-worshipping-my-culture',
+    description: "Why the newly rich pay the most for logos, and how status signals travel from one culture's power to another's longing.",
+    publishedAt: '2026-04-12T10:00:00Z',
+    poem: false,
+    type: 'essay' as const,
+    content: `The business of selling luxury goods to the developing world has always intrigued me. How does a French fashion house convince a newly wealthy businesswoman in Jakarta that a handbag bearing its initials is worth more than her father earned in a year? How does a brand persuade the otherwise frugal emerging rich — people who built their fortunes through discipline, calculation, and delayed gratification — to pay enormous premiums for mass-produced objects that are, by any honest assessment of material quality, barely distinguishable from their generic equivalents? The question sounds rhetorical. It isn't. The answer reveals something true and uncomfortable about the structure of global culture, and about what status actually is and how it travels.
+
+The mechanism is not primarily about the object. It is about the signal. Luxury goods function, in sociological terms, as what the economist Thorstein Veblen first identified in 1899 as _conspicuous consumption_ — spending not for utility but for visibility, to communicate position to observers who understand the code. In every stratified society, the elite class needs to signal its distinction from the commoner class in ways that are legible, durable, and difficult to counterfeit. In ancient societies this was done through access to rare materials — particular dyes, certain metals, specific cuts of cloth — all of which communicated membership in a world most people could not access. The logic has not changed. Only the specific materials have.
+
+## Purple Dye and the Gucci Monogram
+
+In ancient Athens and Rome, Tyrian purple — extracted laboriously from the murex sea snail, requiring thousands of shellfish to produce a single gram of dye — became the exclusive marker of the ruling class. The color was so expensive that only emperors and the highest aristocracy could afford it. When Julius Caesar reportedly said that he would sooner die than stop wearing purple, he was not making a fashion statement. He was declaring allegiance to a symbol of power so potent that forfeiting it would have been tantamount to abdicating his claim to supremacy. Common people who could afford an approximation of purple paid more, proportionally, than royalty, for the same reason that Indonesian socialites today pay more than Elon Musk does for luxury branding: the signal is worth more to the person climbing than to the person already at the top.
+
+This is the most revealing paradox of luxury consumption. The ultra-wealthy, as a rule, do not dress like their aspirational imitators. Musk wears plain t-shirts. Bezos goes to the gym in ordinary athletic clothes. Mark Zuckerberg became notorious for his grey t-shirt wardrobe. The people most aggressively adorned in conspicuous luxury — the monogrammed everything, the logos visible from across a room, the brands that signal expense without the possibility of ambiguity — are, almost universally, those who have recently arrived at wealth, not those who have been in it long enough to no longer need to announce it. Old money whispers. New money shouts, in Gucci.
+
+_The color purple bankrupted its buyers, but they bought it anyway. Every era has its purple. Ours just has better marketing._
+
+## The Geography of Imitation
+
+What is genuinely new about the current era is not the status-signalling itself — that is as old as human hierarchy — but the speed and reach of its propagation. Consumer culture now radiates outward from a specific geographic and cultural origin point with unprecedented efficiency. American celebrity lifestyles, disseminated instantly through Instagram and YouTube, establish the aspirational template for elites in cities that have never had any organic cultural reason to care about Calabasas. The wealthy in Dubai, Mumbai, Shanghai, and São Paulo receive the same lifestyle content simultaneously and calibrate their aspirations accordingly.
+
+There are, consequently, more cultural similarities between the ultra-rich in New Delhi and the ultra-rich in New York than there are between the rich in New Delhi and that city's middle class. Globalization has not produced a meeting of equals — it has produced a global elite class that shares a single aspirational culture, with local elites positioned as followers rather than originators. They do not export their status symbols. They import ours.
+
+The political dimension of this is worth dwelling on. The President of Iran has condemned American consumerism from the pulpit while his government profited from black-market luxury imports. The Communist Party of China officially disdains Western decadence while its _princelings_ — the sons and granddaughters of senior officials — populate the front rows of Paris Fashion Week and purchase Andrew Tate's Bugattis. This hypocrisy is often mocked, but it is worth understanding rather than simply dismissing. It reflects a genuine bind: these states need an anti-Western narrative for domestic political purposes, while the individuals who run them have been fully absorbed into the Western consumer culture they publicly oppose. The opposition is costume. The consumption is conviction.
+
+In The Theory of the Leisure Class (1899), Thorstein Veblen argued that in wealthy societies, consumption becomes less about satisfying needs and more about demonstrating social position. He coined the term "conspicuous consumption" to describe spending designed to be seen rather than used — the purchase as performance. Veblen was writing about Gilded Age Americans. He would have found the global spread of his thesis both validating and depressing.
+
+## The Surface Without the Substance
+
+What gets exported, and what gets absorbed, is rarely the generative core of a culture. The aspects of American culture that produced its actual achievements — the tolerance for failure, the culture of innovation, the genuine meritocratic mythology that once had enough truth in it to produce real social mobility — these do not travel well. They require institutions, norms, and decades of reinforcement to sustain. What travels instantly is the _aesthetic output_ of those achievements: the brands, the celebrity lifestyles, the surface signals of a prosperity built by processes that the imitator culture has not replicated and may not want to.
+
+A Chinese socialite who organizes her social life around comparing Western luxury acquisitions with her peers is not engaging with Western culture. She is engaging with its exhaust — the visible residue of a creative and economic process she has largely bypassed. She purchases the garment without the craft tradition that produced it. She emulates the celebrity without the cultural ecosystem — the free press, the individualist ethic, the genuine risk of public failure — that generates the celebrity in the first place. This is not a criticism of the individual. It is an observation about what cultural power actually exports and what it withholds.
+
+The worship reveals the insecurity. Not the personal insecurity of any individual consumer, but the structural insecurity of a culture that has been made to feel that its own aesthetic traditions, its own markers of status, its own symbols of excellence, are less legitimate than the ones arriving from abroad. Japanese aesthetics, Chinese classical arts, Indian textile traditions, Persian visual culture — these are not inferior to anything produced in Milan or Paris. But they have not been attached to equivalent economic and soft power, and so they do not function as global status signals in the same way. The logo on the bag is not a mark of quality. It is a mark of whose power is currently worth emulating.
+
+_The logo is not a mark of quality. It is a mark of whose power is currently worth emulating._
+
+The question worth asking is not whether this phenomenon will continue — it will, for as long as the underlying power differential that drives it persists. The question is whether the people caught inside it are aware of the mechanism, and whether awareness changes anything.
+
+It changes something. Not everything. Status signalling is not going to be reasoned away — it is too deeply embedded in how human hierarchies function to be eliminated by critique. But there is a meaningful difference between purchasing a status symbol because you have thought about what you are doing and decided the signal serves a genuine purpose in your particular context, and purchasing one because a recommendation algorithm has successfully convinced you that this is simply what people like you do. One is agency. The other is a very expensive form of sleepwalking.
+
+The American celebrities at the top of this hierarchy — the ones whose lifestyles set the template that radiates outward to Delhi and Dubai and Shanghai — do not, as a rule, think of themselves as cultural imperialists. They are simply living their lives in a media ecosystem that has made those lives globally visible and globally aspirational. The power is structural, not conspiratorial. Which makes it harder to see and harder to escape, for everyone inside it — including, if we are honest, the Western consumers who originated the culture being imitated.
+
+We are all, in our various ways, worshipping at the same altar. Some of us just have better seats, and the illusion that proximity to the source makes us participants rather than devotees.`,
+  },
+
+  // ── E3. How to Make Decisions You Won't Regret ────────────────────────────────
+  {
+    title: "How to Make Decisions You Won't Regret",
+    slug: 'how-to-make-decisions-you-wont-regret',
+    description: 'A simple best-case / worst-case reflex for cutting through social pressure and loss aversion when it matters most.',
+    publishedAt: '2026-04-12T11:00:00Z',
+    poem: false,
+    type: 'essay' as const,
+    content: `My friends are looking at me. The cocktail menu is open. Everyone has already ordered, and there is that particular species of social pressure — quiet, ambient, requiring nothing explicit — that suggests the easiest thing to do would be to just order one too. It would be easy. It would be normal. It would, in the moment, feel like the right call.
+
+But here is what I actually know: even a small amount of alcohol disrupts my sleep architecture. I will likely wake at 3am. Once I wake, I will not fall back. And tomorrow — the whole day, irretrievably — will be dimmer for it. I know this about myself with the clarity of someone who has run this particular experiment many times and always arrived at the same result.
+
+So why do most people order the drink anyway?
+
+Because in the moment, the social calculus feels more immediate than the physiological consequence. Appearing relaxed, fitting in, not being the person who makes a thing out of a drink — these rewards are right here, right now. The cost is twelve hours away. And the human brain, built for a world where the threat was immediate or it was irrelevant, is not especially good at giving appropriate weight to deferred consequences.
+
+## The Science of Why We Make Bad Calls
+
+This is not a character flaw. It is a documented feature of human cognition, and Nobel laureate Daniel Kahneman spent his career mapping it. His Prospect Theory, developed with Amos Tversky in 1979, established something counterintuitive: we do not evaluate outcomes in absolute terms. We evaluate them relative to a reference point, and we weight losses and gains asymmetrically. The pain of losing something is, on average, roughly twice as powerful as the pleasure of gaining something equivalent. Losses loom larger than gains — not because we are weak, but because the organisms among our ancestors who treated threats as more urgent than opportunities were the ones who survived.
+
+The cocktail scenario is a version of this. The social loss — the mild awkwardness of declining, the subtle risk to peer perception — is felt immediately and intensely. The gain of a good night's sleep is diffuse, future-tense, harder to feel in advance. So the brain weights the immediate social loss more heavily than the logic of the situation warrants, and orders the drink.
+
+Understanding this does not make you immune to it. But it gives you a tool to work against it: a simple framework for making the asymmetry visible before the moment of decision, rather than reconstructing what went wrong afterward.
+
+_"Organisms that treat threats as more urgent than opportunities have a better chance to survive and reproduce." — Daniel Kahneman, on the evolutionary roots of loss aversion_
+
+## My Method
+
+The method is straightforward. Before any meaningful decision, ask two questions: what is the best realistic outcome if I do this, and what is the worst? Not the catastrophised worst, not the paranoid outlier — the realistic worst, given honest self-knowledge. Then ask which of those two outcomes carries more actual weight in your life.
+
+Run the cocktail through it. Best case: I bond with my friends marginally more than I would have sober. The conversation is slightly warmer, slightly more free. Worst case: disrupted sleep, a compromised tomorrow — a day spent at 60% when 100% was available. How do these compare? A youthful, fully-functioning mind is not an abstract asset. A fifty-year-old billionaire, given the choice, would trade vast wealth for a younger body and the sleep that restores it. The best upside of the drink is minor social glue. The worst downside is a day of my irreplaceable life degraded. That is not a close call. It just feels like one, because the social pressure is in the room and the consequences are in the future.
+
+Once I see it laid out this way, I order sparkling water. And — this is the part nobody mentions — I am usually a better conversationalist by the end of the evening than if I had drunk anything, because I am rested, focused, and genuinely present. The bonding I was protecting by ordering the drink would have been better served by not ordering it.
+
+## When the Stakes Are Higher
+
+Now run a cliff dive through the same framework. Forty metres. A river below. Ten people jumped before me and survived. The upside: an adrenaline rush lasting a couple of hours. The downside: death, or the kind of injury that makes you wish you were dead. The probability of the worst outcome is not negligible, because cliff-diving injuries are notoriously non-linear — the ten previous jumpers tell you almost nothing about whether the riverbed has shifted, whether your entry angle is off, whether the one-in-twenty chance of catastrophe applies to this particular jump. Best case: two hours of feeling alive. Worst case: the remainder of your life foreclosed.
+
+I'm not doing that. And the social cost — someone might think you are a coward — is worth naming for what it is: pressure from people who will not accept any of your worst-case outcomes on your behalf, exerted by individuals who, in most cases, take no meaningful risks in the high-upside domains of life that actually matter: starting a business, learning a hard skill, committing to a difficult relationship. The person calling you a coward for not cliff-diving is the same person who has been in the same job for five years because changing it feels uncomfortable. The cowardice calculus is usually running in the wrong direction.
+
+## The Bezos Version
+
+Jeff Bezos faced a version of this in 1994, deciding whether to leave a secure Wall Street career to start an online bookstore. He called his method the Regret Minimization Framework: project yourself to age 80 and ask which decision you would regret more. Bezos concluded he would not regret trying and failing, but he would regret not having tried at all. "I knew that would haunt me every day," he said. "When I thought about it that way, it was an incredibly easy decision." The mechanism is different from best/worst analysis but the underlying logic is the same — making the asymmetry of outcomes visible before the moment collapses into impulse.
+
+## Why This Works When Pure Logic Doesn't
+
+Kahneman distinguished between two systems of thinking: a fast, automatic, emotionally-driven system and a slower, deliberate, analytical one. Most of our decisions — including, notoriously, most of our important ones — are made by the first system and then rationalized by the second. The cocktail was ordered by the fast system. The rationalisation ("I deserved a drink, it was one drink, it'll be fine") came after.
+
+The best/worst framework works not because it replaces emotional reasoning, but because it gives the analytical system a fast, legible tool to intervene before the fast system has already committed. You are not trying to remove emotion from the decision. You are trying to make the emotional reality of the worst-case outcome vivid enough to compete with the emotional reality of the present-tense social pressure.
+
+This is why the framing matters. "The downside is poor sleep" is abstract. "Tomorrow, you will be at 60%, and tomorrow cannot be recovered" is concrete. The brain responds to vivid losses. Give it one to work with.
+
+## Making It a Habit
+
+This is a rapid-fire tool, which means it needs to be fast. The goal is not an extended deliberation every time you are offered a dessert. The goal is a reflex — a two-second check that runs automatically at the moments when the fast system is most likely to default to comfort, social approval, or immediate pleasure at the expense of something more important.
+
+Start in low-stakes environments. The person who just cut the line in front of you. The extra item you do not need but are about to add to the cart. Small decisions with clear best/worst outcomes. Build the muscle in easy conditions, and it will be available in harder ones.
+
+Because the hard decisions — whether to leave a job, start a business, end a relationship, begin a discipline — all run on the same asymmetric logic. They just have more at stake on both sides, and more social pressure obscuring the actual calculus. The framework does not change. The stakes do. And by the time the stakes are genuinely high, you want the reflex to already be installed.
+
+_"I knew that if I failed I wouldn't regret that, but I knew the one thing I might regret is not ever having tried. I knew that would haunt me every day." — Jeff Bezos_
+
+The cocktail is still on the table. Your friends are still looking at you. The best case and worst case have not changed. The only thing that changes, with practice, is how quickly you can see them clearly — and how little the ambient social pressure costs you, once you have decided that your tomorrow is not for sale.`,
+  },
+
+  // ── E4. Is Our World Becoming More Meaningless? ───────────────────────────────
+  {
+    title: 'Is Our World Becoming More Meaningless?',
+    slug: 'is-our-world-becoming-more-meaningless',
+    description: 'As shared stories and beliefs erode, a Stone Age mind is left adrift in a world of pure data. What we lose when meaning goes.',
+    publishedAt: '2026-04-12T12:00:00Z',
+    poem: false,
+    type: 'essay' as const,
+    content: `Without meaning, a person cannot know what to do with their life. This is not a philosophical abstraction — it is a practical problem, the kind that shows up as a statistic, or as a face staring at the ceiling at three in the morning with no particular reason to get up. Increasingly, people in the Western world have lost their grip on the beliefs and stories that once gave shape to daily existence. This loss does not stay contained. Through cultural exports, through film and music and the flat authority of the internet, it radiates outward, and the rest of the world receives it like a weather pattern — the slow erosion of gods, of soulmates, of justice with a capital J, of Santa Claus. On this trajectory, we will wake up in a world overflowing with data, mathematical facts, and no stories left to tell ourselves about why any of it matters.
+
+We are already partway there. And it is, honestly, a sad place to be.
+
+Sensibility, heroism, divine belief, the idea that suffering has purpose — these are not superstitions. They are among the most reliable sources of long-term human meaning ever documented. Without them, no one volunteers to run into burning buildings as a profession. No one sacrifices for a community that could just as easily betray them. No one pursues justice when the system is rigged and the personal cost is high. We will become, as a civilization, more objective and more "developed" — and the individual humans inside that civilization will quietly fall apart, because we still carry, in our skulls, a Stone Age mind that did not evolve to live in a world of pure information.
+
+## Every Culture Has Always Had Stories
+
+Without exception, every forager culture ever studied tells itself stories about how the world works — stories about justice, love, greed, and consequences. Most worship gods of some kind. Most have rituals that turn the otherwise arbitrary passage of time into something marked, something meaningful. Even modern American culture, until relatively recently, grounded its core values in Christianity — not always coherently, not always honestly, but coherently enough to give millions of people a shared map of what was worth doing and what was worth avoiding.
+
+It is easy to be dismissive of this. It is easy to note the violence done in the name of belief, the frauds committed under its cover, and conclude that the world is better off without such fictions. But this analysis discards the engine along with the exhaust. Shared belief systems made cultures more stable, more cohesive, more capable of the kind of long-term cooperation that any civilization requires. The question is not whether the god is real. The question is what disappears when the belief in one does.
+
+_A world without karma is a world where you can rob a stranger on the subway and feel nothing. Many of us are surprised to discover we still feel something. That surprise is the last echo of meaning doing its job._
+
+When a society moves away from shared belief in justice, in karma, in something beyond the self that is watching and keeping score, the consequences are not purely philosophical. They are behavioral. If there is no consequence beyond the practical, then cheating on an exam when you will not be caught is simply rational. Fraud, if you can get away with it, is optimal strategy. The logic is clean and the conclusion is miserable — not just for the people defrauded, but for the person who has become the kind of self that does the defrauding. Most of us are not built for it. We are, in our genetics and our neurology, coded for loyalty, for care, for the strange irrational satisfaction of doing the right thing when no one is watching. A fully "scientific" self, optimizing every interaction for personal gain, is a self that will be exhausted and hollow long before it has won anything worth having.
+
+## The Game Theory Problem
+
+Game theory is the study of optimal strategies in competitive situations. It is a genuinely useful discipline, and its insights are real. It is also a perfect example of what happens when you remove emotion from the frame entirely and call the result wisdom.
+
+Consider how a fully rational actor is supposed to evaluate a romantic partner. Forget how you feel. Reduce the person to data points. Compare them against the available pool using objective metrics. Reach the optimal conclusion. This method is not just cold — it is wrong, in the most practical sense. It strips out the information that the feeling was actually conveying. When you like someone, your nervous system is running a calculation orders of magnitude more complex than anything you can consciously articulate — integrating thousands of subtle signals about compatibility, safety, shared values, biological fit. The feeling is not noise. It is the output of the most sophisticated decision-making system evolution has ever produced. Game theory, at its worst, teaches you to distrust it.
+
+Emotions are not decorative. Love, empathy, grief, even anger — these are what bind us to one another and to lives larger than our own immediate interests. They are what drive art, sacrifice, and the thousand small acts of maintenance that hold relationships and communities together. A civilization that learns to treat them as inefficiencies to be optimized away will find, eventually, that it has optimized away the reasons it was worth building at all.
+
+## Data Without Story
+
+In a world draining of meaning, material accumulation becomes the default substitute — the thing you pursue when you cannot articulate what else to pursue. We measure success in monetary metrics. We track our lives in data. We compare ourselves, always, to a pool of reference points that the internet has made infinite and therefore permanently defeating. And we find, consistently, that having more does not produce the feeling that having more was supposed to produce, because the feeling was never really about the having. It was about the story — the story of who you were becoming, what your effort meant, what you were building it for.
+
+Data cannot provide that story. Science and reason, for all their extraordinary power to describe the world, cannot address the questions that actually keep humans up at night: What is a life for? How should I treat people when no one is watching? What do I owe to the people who will come after me? These are not empirical questions. They are moral and existential ones, and they require something beyond the empirical to answer. Every society that has ever functioned had some framework for those answers. We are among the first generations to attempt life without one, at scale, and the results are coming in.
+
+_Science tells us how. It has always been the story that tells us why. We destroyed the story and are now surprised we do not know where we are going._
+
+This is not an argument for returning to any specific religion, or for pretending to believe things we do not believe. Intellectual honesty still matters. But it is an argument for taking seriously what we have lost, and for actively constructing the stories, rituals, and shared values that a life — and a society — cannot do without. We can seek to understand the diverse traditions that have kept human beings functional across centuries and geographies, not as museum pieces but as live technologies for meaning-making, refined over thousands of years of actual use.
+
+We can cultivate empathy — not because a book tells us to, but because the alternative is a kind of loneliness that no amount of data will fix. We can tell better stories about who we are and what we owe each other, and we can tell them loudly enough that people hear them over the noise.
+
+A world without meaning is a world that has forgotten what it means to be human. We are not there yet. But the trajectory is visible. And the first step away from it is simply to notice what we are in the process of losing — before it is gone too completely to remember what it felt like to have it.`,
+  },
+
+  // ── E5. Are Screens Our Mortal Enemy? ─────────────────────────────────────────
+  {
+    title: 'Are Screens Our Mortal Enemy?',
+    slug: 'are-screens-our-mortal-enemy',
+    description: 'The screen is a drug-delivery device engineered to harvest your attention. A look at what it does to the brain — and who profits.',
+    publishedAt: '2026-04-12T13:00:00Z',
+    poem: false,
+    type: 'essay' as const,
+    content: `In the United States, roughly 30% of working-age men eligible for employment are neither working nor looking for work. In Japan, the phenomenon of complete social withdrawal — young people who simply stop going outside, sometimes for years — is so normalized it has its own word: _hikikomori_. Estimates suggest over a million Japanese citizens currently live this way. Across the developed world, millions more lie on their backs in the dark, phone hovering ten centimetres from their face, scrolling through a reality someone else constructed for them, algorithmically optimised to feel like life.
+
+The question worth asking is not whether this is a problem. It clearly is. The question is whether we understand why it's happening — and whether the screen itself is the villain, or merely the most convenient delivery mechanism for something far older and more ruthless: the exploitation of the human reward system by entities that profit from your attention.
+
+## What the Screen Actually Does to Your Brain
+
+The screen is not just a window. It is a drug delivery device, and this is not a metaphor. Neuroscientists have demonstrated that social media engagement activates the same regions of the brain implicated in substance addiction — specifically the mesolimbic dopamine pathway, the system that evolved to reward us for finding food, sex, and social belonging. Every notification, like, and video you enjoy activates the brain's reward system — the nucleus accumbens — the same system that fires when you win money or eat your favourite food.
+
+What makes this particularly engineered, rather than incidental, is the mechanism of unpredictability. Variable reward schedules — the same principle that makes gambling so addictive — are built into every major social media platform. Your brain does not get the biggest dopamine hit from receiving a like. It gets the biggest hit from the uncertainty of whether a like is coming. The slot machine is not an accident of design. It is the design.
+
+The brain responds to dopamine spikes by decreasing its baseline dopamine transmission — not just back to natural levels, but below them. Repeated exposure ultimately creates a chronic dopamine-deficit state, where we are less able to experience pleasure from ordinary life. This is why the screen does not satisfy. It cannot satisfy. Its function is to create a thirst it can never fully quench. And then, because you are slightly more depleted than before, it offers you another hit.
+
+A few numbers worth sitting with. 8.5 hours: the average daily screen time for teenagers in the US. 61%: the higher risk of depression associated with four or more hours of daily screen time. Adolescents today are 50% more likely to experience a major depressive episode, and 30% more likely to attempt suicide, than they were twenty years ago.
+
+This is not conjecture. Daily screen time of four or more hours is associated with a 61% higher risk of depression and a 45% higher risk of anxiety in children and adolescents. Adolescents today are 50% more likely to experience a major depressive episode and 30% more likely to attempt suicide than they were twenty years ago. The timeline of those increases tracks, with uncomfortable precision, the mass adoption of the smartphone.
+
+And structural brain changes have been documented in heavy users. Neuroimaging studies have found decreased grey matter density in the prefrontal cortex — the brain's center for executive function, decision-making, and impulse control — in individuals with internet addiction, alongside impairments in dopamine metabolism that affect reward processing and habit formation. The brain is being physically remodelled by the thing in your hand. The prefrontal cortex that governs your ability to delay gratification, assess consequences, and choose the harder right thing over the easier wrong one: it is shrinking in heavy users. This is not a metaphor. It is a measurable structural change.
+
+_The screen tells you that you are a god. Then it sells your attention to someone else while you believe it._
+
+## The Lie That Feels Like a Life
+
+Here is the mechanism in plain language. The screen tells you that you are the top general in multiple fantasy worlds simultaneously. It tells you that beautiful people across the globe find you interesting. It casts you as a protagonist in an endless series of narratives in which you have power, status, and consequence. It introduces you to Joe Biden and Joe Rogan as though they are your personal acquaintances. It tells you that you are, in the most important metrics, winning.
+
+Why would anyone turn that off and go outside, where the feedback is slower, the outcomes uncertain, and nobody is telling you that you matter?
+
+The answer is that the outside world offers something the screen cannot simulate: genuine stakes. The approval of a real person who could withdraw it. The physical consequence of a choice made in an actual body. The satisfaction of a skill developed over time, with real resistance, measured against reality. These are the rewards that the human nervous system evolved to find meaningful. They are also effortful, uncomfortable, and delayed — everything the screen is not.
+
+The result of years of preferring the screen is not just unhappiness. It is a population that has lost its appetite for the difficulty that real life requires. Exposure to "perfect" people who exist only in the digital space creates an inability to measure up, leading to what neuroscientists call learned helplessness — a state of giving up trying, sinking into depression. It is one thing to feel inadequate. It is another to stop believing that effort changes outcomes. That second state is where ambition goes to die.
+
+## The Numbers Nobody Wants to Read
+
+Suicide rates continue to climb in the developed world despite material conditions being, by historical standards, extraordinarily comfortable. Loneliness is now classified by public health authorities in multiple countries as an epidemic. In the United States, roughly 50% of men between 20 and 35 are not in any romantic relationship. AI companion apps — products that provide simulated emotional intimacy with a chatbot — are growing faster than almost any other consumer technology category, and their users often describe them not as tools but as relationships. The apps market themselves accordingly.
+
+Birth rates have fallen below replacement levels in virtually every developed economy. South Korea's fertility rate recently fell below 0.7 — the lowest ever recorded for a developed nation. Japan, Germany, Italy, China: every country where smartphones arrived early and penetrated deeply is now facing the actuarial consequences of a generation that found the screen more immediately rewarding than building a family. By some projections, China's population could fall by hundreds of millions by 2050. These are not unrelated trends. They are the long-term demographic consequences of a civilisation that chose the simulation over the thing being simulated.
+
+## The Elderly and the Screen
+
+The problem compounds at the end of life. Elderly populations, physically constrained from many real-world activities, report average screen times approaching ten hours per day. They use screens to relive their pasts through streaming TV, to maintain social connections they can no longer sustain in person, and increasingly, to interface with AI companions. The screen becomes the world. For many, it already has.
+
+## So Is the Screen the Enemy?
+
+Not exactly. The screen is a tool. So is a hypodermic needle. The question is not what the tool is but what it is delivering, who designed the delivery mechanism, and whose interests it serves.
+
+The social media platforms that dominate screen time are not designed for your flourishing. They are designed, with extraordinary precision and billions of dollars of engineering, to extract the maximum number of minutes of your attention and convert those minutes into advertising revenue. Your loneliness is a business model. Your dopamine deficit is a feature, not a bug, because it brings you back for more. The apps that offer AI romantic companions are not building them because they care about your need for connection. They are building them because lonely people will pay for the simulation of something that costs nothing to produce and can scale to a billion users.
+
+A randomized controlled trial found that reducing smartphone use to two hours or less per day for just three weeks led to significant improvements in well-being, depressive symptoms, stress, and sleep quality. Three weeks. Two hours. The cage is not locked. The door is not even fully closed. But it requires you to believe that what is on the other side of it is worth the discomfort of walking through — that the world made of friction and actual people and real stakes is a better world than the one built by engineers in Menlo Park to resemble one.
+
+Millions of people right now are lying still, face bathed in blue light, being told they are gods. They are not thriving. The suicide rates confirm it. The birth rates confirm it. The loneliness studies confirm it. The brain scans confirm it.
+
+The screen might not be our mortal enemy. But the thing on the other side of it — the product we have been turned into, the attention being harvested from us, the life being substituted for us while we watch — that deserves the name.
+
+The phone is still going to be there in an hour. Go outside first.`,
+  },
+
+  // ── E6. The Art of Direct Confrontation ───────────────────────────────────────
+  {
+    title: 'The Art of Direct Confrontation',
+    slug: 'the-art-of-direct-confrontation',
+    description: 'Modern life engineered away the confrontation humans spent millennia practicing. Why white-collar workers now pay to be punched in the face.',
+    publishedAt: '2026-04-12T14:00:00Z',
+    poem: false,
+    type: 'essay' as const,
+    content: `As I've gotten older, I've come to resent badminton. Not intensely — just enough to notice it. The game is, at its structural core, about engineering your opponent's failure. You don't score by doing something remarkable; you score when they do something wrong. Every shot is a setup, a trap, a small act of sabotage disguised as athleticism. In this way badminton, tennis, squash — any net sport where you and your opponent face each other across a dividing line — is a combat sport wearing a polo shirt. Two deer in a clearing, antlers locked. The only real difference from boxing is the dress code.
+
+What I find interesting is not the game itself but what I noticed resenting it: the directness. The fact that your opponent can see your face when you make them look foolish. That there is no buffer, no committee, no performance review process standing between the two of you and the outcome. Just the shuttle, the net, and the score.
+
+Because in almost every other domain of adult life, that directness has been engineered away. We have built a civilization that runs, astonishingly well in many ways, on the avoidance of direct confrontation. And in doing so, we have quietly let atrophy a skill that human beings spent hundreds of thousands of years developing — and that we still need, badly, every single day.
+
+## Your Classroom is a Jungle
+
+To understand what we've lost, it helps to watch children.
+
+A child entering elementary school for the first time has arrived in one of the most honestly competitive environments they will ever inhabit. The rules have not yet been written. The adults have not yet fully imposed their framework of "should" and "should not." What fills the vacuum is something old and recognisable: a social hierarchy being assembled in real time, with every available tool.
+
+Physical dominance is the most legible currency and the first to be deployed. The children who can fight — or who convincingly threaten to — establish their positions early. This is not aberrant behaviour. It is the behaviour of every social primate that has ever lived. The shock is not that it happens. The shock is how quickly and fluently children, with no instruction, reconstruct a social architecture that anthropologists would find immediately familiar.
+
+But watch what happens next. The classroom is full of children who are not the biggest or the strongest, and they are not passive. They are problem-solving. Some attach themselves to the dominant children as loyal lieutenants — protectors in exchange for logistics, diplomacy, the management of small unpleasant tasks that leaders prefer not to handle themselves. In my class there was a boy who sincerely called himself a "strategist." He was not wrong. Others become social architects — organising games, managing alliances, making themselves indispensable through usefulness rather than force. One creative approach I watched play out across several years: becoming the person who makes the dominant child look good in front of others. The court jester who reflects glory rather than competing for it.
+
+And then there are the outcasts. They are not merely unfortunate collateral damage. They serve a structural function in the group's cohesion — the common enemy that bonds the ingroup, the target that reminds everyone inside the circle why membership is worth maintaining. Every court needs a villain it can point to. Elementary school classrooms, without any adult having planned it, produce them reliably.
+
+_Children don't need to be taught to compete. They need to be taught when to stop._
+
+What is striking about all of this — what we so often miss when we are merely trying to survive it — is how cognitively demanding it is. The children navigating this landscape are developing, at extraordinary speed, skills in social reading, threat assessment, alliance management, and strategic positioning. They are being confronted, daily, with direct feedback on their choices. They lose a fight: they learn something. They misjudge an alliance: they learn something. They try a new approach: immediate result. The classroom is a brutal but extraordinarily efficient training environment for direct confrontation and its management.
+
+## The Great Softening
+
+Then something changes. It changes gradually, across middle school and high school, as children begin to absorb the values of the adult world above them. They look up and notice: the most powerful adults in their orbit are not the physically strongest. They are the ones with money, credentials, and social grace. The doctor. The school principal. The business owner whose car is new. Power, they learn, has changed its costume.
+
+This is not simply the influence of maturity. It is also the influence of modernity. In an economy where success is largely decoupled from physical dominance, where your income comes from expertise rather than territory, where the most effective way to get what you want is often to make the other person want to give it to you — in this world, direct confrontation becomes not just unnecessary but actively counterproductive. Charm scales. Aggression, mostly, does not.
+
+And so we adapt. We learn that being genuinely warm and interesting and easy to be around can place you in social hierarchies just as effectively as intimidation, and with considerably less personal cost. We learn that conflict is expensive — emotionally, reputationally, sometimes legally. We learn to route around it. Gradually, the muscle goes unused. And unused muscles, whatever our grade-school PE teachers told us, do not maintain themselves.
+
+This is not a complete story. The softening varies dramatically by gender, class, profession, and geography. Men in certain industries never lose the direct confrontational reflex. Women, socialised more aggressively toward conflict-avoidance, often arrive at adulthood with the skill even more thoroughly suppressed. The white-collar professional class — the demographic most likely to read essays like this one — is probably the most extreme case of the atrophy described here.
+
+The problem is that confrontation did not disappear from the world when we stopped practising for it. It simply became less frequent — and therefore more destabilising when it arrived. The car crash. The landlord who knows you won't fight back. The colleague who takes credit because you won't call it out in the meeting. The partner who tests what you'll tolerate because the answer has always been "more than I should." The gap between a world that still produces conflict and a population that has lost its ability to navigate conflict is not an abstract philosophical problem. It is the source of a very specific kind of suffering: the person who walks away from every confrontation feeling like they lost, not because they were in the wrong, but because they simply didn't know how to be present for the fight.
+
+## The Gym as Kindergarten
+
+This is why, every evening in cities all over the world, white-collar workers — people who spend their days in meetings, on calls, managing perception and language and relationship — pay to be punched in the face.
+
+Not metaphorically. Literally. Muay Thai, Brazilian Jiu-Jitsu, boxing, wrestling: the combat sports gyms of any major city are full of lawyers, architects, consultants, and software engineers who have chosen to spend their leisure time in direct, physical confrontation with another human being. From the outside this looks like stress relief or fitness or a personality type drawn to intensity. And it is all of those things. But it is also something more specific: a return to the kindergarten clearing, the elementary school hallway, the space where feedback is immediate and the body relearns what the mind has been trying to forget.
+
+In a sparring session, there is no ambiguity. You cannot talk your way out of a takedown. You cannot manage optics when someone's arm is across your throat. The confrontation is total and the result is instantaneous. And — this is the part that people who have done it invariably report — it is not nearly as catastrophic as the nervous system, calibrated to the low-conflict adult world, has led you to expect. You get hit. You survive. You adjust. You get hit again. The sky does not fall. The social hierarchy does not collapse. And slowly, over weeks and months, the fear of direct confrontation — not just physical confrontation but all confrontation — begins to recalibrate.
+
+_You cannot talk your way out of a takedown. That is, in fact, the point._
+
+The principle generalises well beyond the gym, and this is important. The goal of practising confrontation in physical contexts is not to become someone who solves problems with aggression. It is to rebuild the nervous system's tolerance for the discomfort of direct opposition — so that when you need to tell your landlord that the boiler has been broken for three weeks and you expect it fixed, the sentence comes out of your mouth at full volume, without apology, without the instinct to soften it into a question.
+
+## Practising Being an Animal
+
+The graduation from zero confrontation to meaningful confrontation works exactly like any other form of training: you do not begin at the hardest level. You begin where the resistance is real but manageable, and you increase the intensity gradually as your capacity grows.
+
+The person who has never stood up for themselves in a conflict is not going to march into their boss's office and demand a raise over coffee. That is not cowardice. That is the equivalent of deciding to train for a marathon by running twenty-six miles on day one. What they can do is tell the person who just cut in line in front of them to please go to the back. Small confrontation, low stakes, immediate feedback. A minor social transgression and your entirely reasonable response to it. Most of the time the person moves. Sometimes they don't and you survive that too. Both outcomes are instructive.
+
+From there: the cashier who charged you incorrectly. The friend who consistently cancels at the last minute. The colleague who talked over you in the meeting. Each of these is a rep. Each is a small return to the elementary school clearing, where the rules were honest and the feedback was immediate and nobody pretended that conflict wasn't happening.
+
+We have not become too sophisticated for confrontation. We have become too avoidant of discomfort — which is a different thing, and a corrigible one. The skill is not gone. It is dormant. And like most dormant things, it wakes up faster than you expect once you give it a reason to.
+
+Go find your cue line-cutter. Start there.`,
+  },
+
+  // ── E7. Time, the One Currency that Cannot be Earned ──────────────────────────
+  {
+    title: 'Time, the One Currency that Cannot be Earned',
+    slug: 'time-the-one-currency-that-cannot-be-earned',
+    description: 'Freedom and time are the same thing described twice. On protecting the only resource you can never get back.',
+    publishedAt: '2026-04-12T15:00:00Z',
+    poem: false,
+    type: 'essay' as const,
+    content: `Freedom has always been expensive. Long before money existed, people paid for it with time, obedience, and survival itself. In the foraging bands of our ancestors, children began at the very bottom of the social order — not out of cruelty, but calculation. Roughly half of all prehistoric children never made it to adulthood. Why grant authority to someone who might not be here next season? You earned your place slowly, through demonstrated endurance and usefulness, until the tribe recognized you as someone worth consulting, someone whose future was probable enough to matter. Even in those small, intimate communities — perhaps especially in them — freedom was not given. It was accumulated, painfully, over years.
+
+We tend to romanticise the forager's life as free, and in some ways it was. But freedom has never been the absence of constraint. It has always been the negotiation with it. What's changed, over the millennia, is the quality of the constraints. And what I want to talk about is whether the deal we've accepted — the modern bargain of schooling, employment, and structured time — is one we actually chose, or one that was simply handed to us before we were old enough to read the fine print.
+
+## Ningbo, Age Ten
+
+I grew up in Ningbo, a small coastal city in China, and I hated school with the kind of whole-body dread that is hard to explain to anyone who didn't feel it. Not a mild reluctance. Not laziness. Fear. At ten years old, the thought of walking through those gates in the morning produced something close to physical illness. The schedule was not a schedule so much as a sentence — every hour claimed, every minute spoken for, nothing left over that belonged to me.
+
+It took me years to understand what that feeling actually was. It wasn't school I hated. It was the loss of agency. The structure didn't ask what I was curious about. It didn't leave room for the question. It simply told me where to be and what to think about and when to stop. And something in me — something old and stubborn and probably inherited from ancestors who spent forty thousand years deciding for themselves when to hunt and when to rest — found that unbearable.
+
+When I eventually started working, I was surprised to find that I loved it. Not because work is easier than school, but because work, at its best, offers a transaction you can understand: you contribute something real, something you chose to develop, and you receive something back. School, especially in its more rigid forms, offers no such clarity. The contract is obscure. The return is deferred and uncertain. And underneath all of it, if you look closely, is a system that benefits from keeping you enrolled — from keeping you paying tuition, occupying seats, and not yet earning enough to opt out.
+
+Students know this. They don't always have language for it, but they feel it. The course selection portals with their endless prerequisites, the compulsory classes on subjects that have nothing to do with your actual interests, the years spent approaching the knowledge you actually came for — these are not accidents of administration. They are the shape of an institution that has confused its own continuation with its students' flourishing. Every person who has ever felt the joy drain out of a subject they once loved because they were forced to study it on someone else's timeline has felt this.
+
+_The joy of learning doesn't disappear. It gets scheduled out of us, one mandatory credit at a time._
+
+## What Time Actually Is
+
+The average human life is around eighty years. Of those, perhaps forty are what most people would call good years — years of full energy, genuine physical capability, and the kind of mental sharpness that makes you feel like yourself. Our bodies were adapted, over hundreds of thousands of years, to operate brilliantly for about that long. After that, things that were always quietly accumulating begin to surface. This is not pessimism. It is biology.
+
+Which means that if you are in your twenties, you have roughly twenty years of peak life ahead of you. Not a hundred. Not forever. Twenty.
+
+I think about money as crystallised time. You go to work and trade hours of your life for a currency that can, in turn, be exchanged for more hours — hours you don't have to spend commuting, or waiting, or doing things that drain rather than replenish. This is why the calculus of supposedly good deals is more complicated than it looks. That flash sale you stood in line for two hours to access: did you actually save money, or did you trade two hours of your finite life for forty dollars? The bus commute that saves you the cost of parking: is an hour a day — five hours a week, two hundred and sixty hours a year — a reasonable price for what you're getting back?
+
+Time, in this framing, is not a resource. It is the resource. Everything else — money, status, comfort — is downstream of it. And once you start seeing it that way, you begin to notice how many of the arrangements of ordinary life are quietly, consistently, extracting it from you in amounts you never consciously agreed to.
+
+During the worst years of middle school, the best part of my day was sleep.
+
+Not because I was especially tired, though I was. But because in sleep, no one had scheduled me. Dreams were the only hours that belonged entirely to me — unplanned, ungraded, ungoverned. I would wake up and feel, briefly, like a person, and then the day's itinerary would reassert itself and I would remember that I was not a person so much as an appointment.
+
+It doesn't have to be that way. I know that now. But I didn't know it then, and I think many people never learn it, because the lesson requires you to believe that your time is actually yours — a belief the systems around us work hard to prevent.
+
+Our foraging ancestors, those people we're so quick to pity for their lack of Netflix and central heating, worked something in the range of three to five hours a day on subsistence tasks and spent the rest around fires, with people they loved, doing things that made sense to them. This is not a fantasy or a romanticisation. It is what the anthropological record shows. They were not, by any measure that matters, deprived. They were, in the specific dimension we most often fail at, free.
+
+_Freedom and time are not related concepts. They are the same concept, described twice._
+
+## What Freedom Actually Feels Like
+
+For me, freedom is watching clouds move. It sounds small, maybe even absurd. But the ability to sit somewhere without urgency, without an alert pending, without the low hum of something undone pressing at the edge of consciousness, and simply watch the sky change — that is not a luxury. That is what life is supposed to feel like when it is not being consumed by something else.
+
+For you it might be something different. An elaborate meal cooked slowly. A long walk with no destination. A conversation allowed to arrive wherever it wants without being steered toward a point. Whatever it is, you know it when you're in it, because time stops feeling like loss.
+
+The work, then — and it is real work, maybe the most important kind — is to protect those hours. To notice what is eating them and ask whether you actually agreed to that exchange. To recognize that every thing you say yes to is a thing you are spending a portion of your irreplaceable life on, and to start making that accounting consciously rather than by default.
+
+You will not get the hours back. None of us will. But you can decide, starting now, to be more deliberate about where they go. You can stop letting your most valuable possession be distributed by other people's priorities. You can insist, gently but firmly and every single day, on being present for your own life.
+
+Freedom is time. Time is life. This is the only equation that has ever actually mattered, and almost everything else — the career ladders, the savings plans, the curated busyness — is a very elaborate way of avoiding it.
+
+Look up. The clouds are still moving. Some of your time is still yours. Use it for something you chose.`,
+  },
+
+  // ── E8. The Product Is Great. Nobody Cares. ───────────────────────────────────
+  {
+    title: 'The Product Is Great. Nobody Cares.',
+    slug: 'the-product-is-great-nobody-cares',
+    description: 'China won the manufacturing era and lost the story. Why people buy identities, not products — and what soft power really costs.',
+    publishedAt: '2026-04-12T16:00:00Z',
+    poem: false,
+    type: 'essay' as const,
+    content: `There is a peculiar humiliation that China's most ambitious exporters face every time they try to sell to the world. Their products are technically superior. Their prices are unbeatable. And yet, somewhere in the boardrooms of São Paulo and the markets of Brussels, the instinct persists: the Chinese option just doesn't feel right. It doesn't feel like anything, really. It just feels cheap — and not in the way that saves you money. Cheap in the way that makes you wonder what you're saying about yourself.
+
+This is the central paradox of Chinese soft power in 2026: a nation that has arguably won the manufacturing era, that leads in electric vehicles, high-speed rail, and now holds a commanding position in artificial intelligence research, remains culturally illegible — even undesirable — to large swaths of the global consumer class. The product is extraordinary. The story around it is nearly nonexistent.
+
+_"Chinese brands only think about low cost and high quality and try to optimize that. But sometimes that's not why people buy things." — Overheard in Lima, Peru_
+
+The observation sounds harsh. It is also completely accurate. And to understand why, you have to go back about a hundred years — to a time when another industrial giant made the exact same mistake.
+
+## The General Motors Lesson Nobody Taught Beijing
+
+In the early postwar years, the American automobile market was a battlefield of engineering. Ford and General Motors competed on horsepower, on price, on reliability — the metrics that felt most rational, most honest. And then a consultant named Andy Hayes walked into GM and said something that must have seemed like madness at the time: stop talking about the car. Start talking about the person who drives it.
+
+The result was one of the most durable branding architectures in industrial history. Cadillac became aspiration made metal. Chevrolet became the honest American worker's reward. Ford, famously resistant, dug in on the product — and paid for it. The market, it turned out, was never really buying transportation. It was buying identity, status, and a story it could tell at dinner parties.
+
+A century later, Chinese manufacturers are relearning this lesson from scratch — and paying dearly for the delay. Brazilian entrepreneurs in Lima, comparing Chinese and European goods side by side, arrive at a verdict that is both damning and sympathetic: technically, the Chinese product wins. Emotionally, it loses before the packaging is even opened.
+
+When people have abundance of choices, they stop buying products — they vote with their wallets for ideologies, identities, and the kind of person they wish to be. This is a post-scarcity logic that China, still operating partly in a scarcity mindset, has been slow to fully internalize.
+
+## The Noodle Problem
+
+Consider pasta. Italian pasta — dried wheat, water, maybe some semolina — commands premium shelf space in supermarkets from Seoul to Santiago. It carries the ineffable weight of la dolce vita, of Roman afternoons, of old money and older olive groves. Now consider Lanzhou beef noodle soup: a dish of comparable craft, comparable tradition, arguably superior complexity. It has hand-pulled dough, a broth that simmers for hours, the bite of Sichuan peppercorn. And yet it is priced and perceived as lunch for laborers.
+
+The gap is not culinary. It is geopolitical — and it is old. European nations exported not just goods but an entire civilizational mythology during centuries of colonial dominance. The food, the wine, the fashion, the architecture — all of it arrived in the global imagination pre-loaded with associations of wealth, refinement, and power. "Soft power," in this reading, is simply the cultural residue of hard power. You don't choose to find Italian pasta sophisticated. You were taught to, by two centuries of European economic dominance, and that lesson calcified into taste.
+
+China, which was on the receiving end of that dominance — looted by Western powers in the 19th century, impoverished by colonial trade terms, delayed in its industrial revolution by decades of chaos — never got to write that portion of the script. It arrived late to the table and is now discovering that the aesthetics have already been set.
+
+## Ancient is Cool. Modern is Not.
+
+Here is where the analysis gets genuinely strange — and genuinely revealing. Talk to young women in Southeast Asia, in Latin America, in Eastern Europe who are drawn to East Asian culture, and a pattern emerges with remarkable consistency. Ancient China? Fascinating. Xianxia dramas, period epics, the Tang Dynasty aesthetic — this content travels. It accumulates fans. It gets fan-translated and watched at 2am in countries China's foreign ministry has never seriously considered as soft power targets.
+
+Modern China? Almost uniformly unappealing — at least in its officially mediated form. The contemporary China portrayed in state-adjacent TV productions reads as stiff, propagandistic, emotionally constrained. The romance is bureaucratic. The coolness is performed. Nobody is buying it.
+
+South Korea, by contrast, stumbled into a cultural export machine almost by accident. K-pop and K-dramas were not initially government projects — they were commercial bets by entertainment companies trying to survive a financial crisis by expanding markets. The government's role came embarrassingly late: G-Dragon was appointed South Korea's cultural ambassador several years after his global peak, a move about as nimble as naming Einstein a science ambassador in 1970.
+
+The lesson is not that China needs a better bureaucratic plan. It is that authentic cultural cool cannot be manufactured by decree. It emerges from creative freedom, from artists who are allowed to fail in public, from a media ecosystem that is messy and competitive and genuinely risky. The kind of ecosystem that China's current media environment systematically suppresses.
+
+## The Rat Race and the Empty Brand
+
+There is a deeper structural problem, one that goes beyond marketing and touches something more uncomfortable. The average young Chinese worker — educated, ambitious, digitally sophisticated — is operating in a system that demands total dedication to survival with diminishing guarantees of reward. The result is a generation that thinks about work even when not working, that cannot afford the psychic space for the kind of creative risk-taking that cultures need to produce exportable cool.
+
+This is not a character flaw. It is a rational response to a system where the margin for error is catastrophically thin. In an economy of genuine scarcity, you optimize ruthlessly. You don't experiment. You don't fail publicly and learn. You survive. And survival, for all its dignity, does not generate the kind of cultural output that makes the rest of the world want to wear your aesthetic.
+
+The irony is almost unbearable. China is, by most technical metrics, winning. Its electric grid is formidable. Its AI researchers are among the world's best. Its Belt and Road initiative is the most ambitious infrastructure diplomacy since the Marshall Plan. And yet the soft power — the part that makes people want to eat your noodles and watch your films and feel something warm and aspirational when they think of your country — remains stubbornly underdeveloped.
+
+The product is great. The brand is still a work in progress. And in a world where people are not buying products but identities, that gap matters more than any tariff or trade deficit.
+
+China has the history. It has the craft. It has, arguably, the most layered and complex cultural archive of any civilization on earth. The ancient story is there, and the world is already watching it, already falling in love with it. The modern story is still being written — and right now, the authors are too constrained to make it sing.`,
+  },
+
+  // ── E9. Be a Hunter-Gatherer. But With Guns. ──────────────────────────────────
+  {
+    title: 'Be a Hunter-Gatherer. But With Guns.',
+    slug: 'be-a-hunter-gatherer-but-with-guns',
+    description: 'Our ancestors worked less, slept more, and were healthier than the farmers who replaced them. Take the lifestyle, not the era.',
+    publishedAt: '2026-04-12T17:00:00Z',
+    poem: false,
+    type: 'essay' as const,
+    content: `Ten thousand years ago, a person with your exact genes — your stubbornness, your bad knees, your tendency to catastrophise at 2am — worked about three to five hours a day. She foraged for berries and mushrooms, tracked small game through familiar forest, and then, crucially, stopped. The rest of her hours she spent sleeping in the sun, telling stories, arguing with her cousins, nursing her children. Anthropologist Marshall Sahlins, in his now-legendary 1966 paper _The Original Affluent Society_, called this the "Zen road to affluence": not producing more, but wanting less. Richard Lee's fieldwork with the !Kung Bushmen of the Kalahari found that foragers devoted just twelve to nineteen hours a week to subsistence — and that even including food prep and toolmaking, the total rarely exceeded what any modern office worker would call "a light Friday." Sahlins' uncomfortable conclusion: the original affluent society was not Silicon Valley. It was the savannah.
+
+How many hours do you work in a week? What do you actually do with that time? Would you do it if you didn't need the money? Most people, if they're honest, answer no to that last one. This is not a personal failure. It is an evolutionary mismatch so profound it would have baffled our ancestors, had they survived long enough to care.
+
+_"The food quest is intermittent, leisure abundant, and there is a greater amount of sleep in the daytime per capita per year than in any other condition of society." — Marshall Sahlins, Stone Age Economics, 1972_
+
+We transitioned first to agriculture, then to industry, and told ourselves it was progress. But the biological record tells a murkier story. When researchers conducted the first comprehensive global review of human skeletal remains across the agricultural transition, they found a result that managed to be both shocking and completely predictable: in 19 of 21 societies examined, the shift to farming was accompanied by a measurable decline in health. People got shorter. Their bones showed more signs of infection and nutritional stress. Dental disease spiked. Seasonal crop failures introduced a vulnerability to starvation that the varied diet of a forager had largely insulated against. The bodies of the first farmers were, in a very literal sense, worse than the bodies of the people who came before them. We built civilisation at a biological cost we are still paying — in processed food aisles, in cortisol, in the peculiar modern epidemic of people who have everything and feel nothing.
+
+What once gave us happiness — real community, physical purpose, food earned and tasted, shelter that meant something — has been replaced by a grim parody of each. The social group became the online community. Sex became algorithmically optimised pornography. The communal meal became food delivery in a single-occupancy apartment. We know, somewhere below the level of articulation, that something is wrong. The self-help industry, worth over 40 billion dollars globally, exists largely to paper over this knowledge.
+
+The question, then. Could we go back?
+
+## The New Forager
+
+Actually, yes. And it would be easier than you think — because the farming and industrial revolutions that displaced us also left behind an extraordinary toolkit. The trick is to take the lifestyle, not the era.
+
+Start with safety. Our ancestors faced predators, infections, and childbirth in the forest with nothing but knowledge and each other. That particular problem has been solved. Bring a first aid kit. Know the number of the nearest hospital. Drive there in a car.
+
+One of the most important medical breakthroughs in human history — Dr. Ignaz Semmelweis's discovery in 1847 that physicians washing their hands before deliveries could slash maternal mortality — requires nothing more than soap and water. The germ theory of disease, antibiotics, antiseptics: these are small, portable, cheap. You don't need a hospital wing. You need a well-stocked case and a working phone.
+
+Childhood mortality dropped from roughly 50% in the 1800s to around 5% globally today — a civilisational achievement. Almost none of it required factory work or open-plan offices. The decisive gains came from handwashing, clean water, basic vaccination, and oral rehydration salts. These are forager-compatible technologies. Pack them.
+
+Now the food. Modern crossbows make our ancestors' wooden recurve bows look like toys. A person with reasonable eyesight and a weekend of practice can harvest game competently — and with a firearm for genuine emergencies, the most dangerous apex predators in any landscape are no longer an asymmetric problem. For plant identification, the phone in your pocket is a marvel that would have constituted magic by any previous standard. Apps like iNaturalist and Seek use your camera to identify wild edibles and flag poisonous lookalikes in real time. You can mark berry patches, note seasonal abundance, build a personal map of your foraging territory — all while listening to a podcast. The gathering half of hunter-gatherer has never been easier or safer in the history of the species.
+
+Shelter is a non-issue. A good four-season tent costs less than a month of rent in any major city. A well-built timber cabin, for a committed group, is a season's project. The material bar has never been lower for getting out.
+
+## The Tribe Question
+
+Here is the part most people trip over, because it sounds like a practical problem when it is actually a cultural one. Humans are obligate social animals. We did not evolve to live alone. The forager's real advantage was not the four-hour workday — it was the twenty-hour community. The gossip and the fire and the children underfoot and the argument resolved and the old woman who knows everything about roots and the young man who runs fastest. That web of mutual dependence is what we actually traded away, and a Discord server does not replace it.
+
+But nothing stops you from building a new one. A tribe of modern foragers with shared land, complementary skills, and a medical person equipped for emergencies is not utopian speculation — it is a description of communities that already exist, from intentional villages in rural Portugal to permaculture collectives in New Zealand to homesteading networks across the American interior. The infrastructure exists. What's missing is the social permission to take it seriously.
+
+_When a !Kung Bushman was asked why his people hadn't taken up farming, he replied: "Why should we plant, when there are so many mongongo nuts in the world?" — Richard B. Lee, Man the Hunter, 1968_
+
+The objection you're forming right now is probably not logistical. It's philosophical. It's the uneasy suspicion that opting out of the economy is failure — that the correct response to an ill-fitting civilisation is to work harder at fitting into it, not to walk away. This is the most successful piece of ideological engineering in human history: the belief that productivity is virtue, that busyness is meaning, that a life of four-hour workdays and long afternoons in good company is somehow less than a life of fifty-hour weeks in a climate-controlled box.
+
+It is not less. Our bodies know this. Our cortisol levels know this. The 40 billion dollar self-help industry — all those books about how to hustle better, sleep optimise, biohack your way back to the equanimity your great-great-grandmother found by walking slowly through a forest — knows this. We are running an enormous collective experiment in whether you can engineer fulfilment from the outside in, and the results are not promising.
+
+Nobody is suggesting you learn to chip flint. The agricultural and industrial revolutions happened, and they left behind genuinely useful things: penicillin, optics, water filtration, the accumulated knowledge of every foraging culture ever documented, now searchable from your palm. The goal is not to reject modernity wholesale. It is to take what actually works — the tools, the medicine, the safety — and leave behind what does not: the sixty-hour week, the isolated apartment, the social substitute, the performance of a life rather than the life itself.
+
+Your ancestors were, by every measurable standard, doing something right. They were healthier than the farmers who replaced them. They worked less than the industrialists who replaced those farmers. They slept more, moved more, ate more variety, and maintained the kind of dense social bonds that modern neuroscience has confirmed are the single strongest predictor of longevity and subjective wellbeing. They did all of this without electricity, antibiotics, or reliable mushroom identification apps.
+
+Imagine what they could have done with guns.
+
+The question is not whether you can do this. The question is whether you want to badly enough to feel ridiculous for a while. Because opting out is always going to look eccentric from inside the system that benefits from your participation. The !Kung Bushmen were called lazy by colonial administrators who could not fathom why a person would stop working when they had enough. We have inherited that administrator's judgment, internalised it, and called it ambition.
+
+You don't have to. Walk around the parts of the old life you don't want — the disease, the darkness, the infant mortality — and enjoy everything else. Take the crossbow. Take the app. Take the first aid kit and the satellite messenger and the good tent. Take three or four people you actually love.
+
+Go find the mongongo nuts.`,
+  },
 ]
 
 // ─── Server action ────────────────────────────────────────────────────────────
@@ -2863,14 +3406,14 @@ export default async function ImportPage() {
           className="text-3xl mb-2"
           style={{ fontFamily: "'Cormorant Garamond', serif", color: 'var(--text)' }}
         >
-          Import from Medium
+          Import Works
         </h1>
         <p
           className="text-sm mb-8"
           style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-muted)' }}
         >
-          Imports all 7 short stories from @tjho1818 as published works. Already-imported stories
-          (matched by slug) are skipped safely.
+          Imports short stories (from Medium) and essays (from Substack) as published works.
+          Already-imported pieces (matched by slug) are skipped safely.
         </p>
 
         <div className="mb-8 space-y-2">
@@ -2912,7 +3455,7 @@ function ImportButton({ action }: { action: () => Promise<{ imported: string[]; 
         className="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-opacity hover:opacity-85"
         style={{ fontFamily: "'Inter', sans-serif", backgroundColor: 'var(--text)', color: 'var(--bg)' }}
       >
-        Import 8 works →
+        Import {STORIES.length} works →
       </button>
     </form>
   )
