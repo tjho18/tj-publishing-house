@@ -47,7 +47,8 @@ function poemToDoc(raw: string): TipDoc {
 
 const STORIES: {
   title: string; slug: string; description: string
-  publishedAt: string; poem: boolean; type?: 'story' | 'novel' | 'essay'; content: string
+  publishedAt: string; poem: boolean; type?: 'story' | 'novel' | 'essay'
+  cover?: string; content: string
 }[] = [
   // ── 1. Hot Rock ─────────────────────────────────────────────────────────────
   {
@@ -2794,6 +2795,7 @@ Damn this flower.`,
   {
     title: 'Who Is Actually Making Your Decisions?',
     slug: 'who-is-actually-making-your-decisions',
+    cover: '/essays/who-is-actually-making-your-decisions.jpg',
     description: 'Three forces — the state, the gene, and the human — quietly compete behind every choice you make. Learning to name them is how you take your life back.',
     publishedAt: '2026-04-12T09:00:00Z',
     poem: false,
@@ -2869,6 +2871,7 @@ The life that results from that kind of awareness is not perfect. But it is, at 
   {
     title: 'I Love Worshipping My Culture',
     slug: 'i-love-worshipping-my-culture',
+    cover: '/essays/i-love-worshipping-my-culture.jpg',
     description: "Why the newly rich pay the most for logos, and how status signals travel from one culture's power to another's longing.",
     publishedAt: '2026-04-12T10:00:00Z',
     poem: false,
@@ -2918,6 +2921,7 @@ We are all, in our various ways, worshipping at the same altar. Some of us just 
   {
     title: "How to Make Decisions You Won't Regret",
     slug: 'how-to-make-decisions-you-wont-regret',
+    cover: '/essays/how-to-make-decisions-you-wont-regret.jpg',
     description: 'A simple best-case / worst-case reflex for cutting through social pressure and loss aversion when it matters most.',
     publishedAt: '2026-04-12T11:00:00Z',
     poem: false,
@@ -2983,6 +2987,7 @@ The cocktail is still on the table. Your friends are still looking at you. The b
   {
     title: 'Is Our World Becoming More Meaningless?',
     slug: 'is-our-world-becoming-more-meaningless',
+    cover: '/essays/is-our-world-becoming-more-meaningless.jpg',
     description: 'As shared stories and beliefs erode, a Stone Age mind is left adrift in a world of pure data. What we lose when meaning goes.',
     publishedAt: '2026-04-12T12:00:00Z',
     poem: false,
@@ -3030,6 +3035,7 @@ A world without meaning is a world that has forgotten what it means to be human.
   {
     title: 'Are Screens Our Mortal Enemy?',
     slug: 'are-screens-our-mortal-enemy',
+    cover: '/essays/are-screens-our-mortal-enemy.jpg',
     description: 'The screen is a drug-delivery device engineered to harvest your attention. A look at what it does to the brain — and who profits.',
     publishedAt: '2026-04-12T13:00:00Z',
     poem: false,
@@ -3093,6 +3099,7 @@ The phone is still going to be there in an hour. Go outside first.`,
   {
     title: 'The Art of Direct Confrontation',
     slug: 'the-art-of-direct-confrontation',
+    cover: '/essays/the-art-of-direct-confrontation.jpg',
     description: 'Modern life engineered away the confrontation humans spent millennia practicing. Why white-collar workers now pay to be punched in the face.',
     publishedAt: '2026-04-12T14:00:00Z',
     poem: false,
@@ -3160,6 +3167,7 @@ Go find your cue line-cutter. Start there.`,
   {
     title: 'Time, the One Currency that Cannot be Earned',
     slug: 'time-the-one-currency-that-cannot-be-earned',
+    cover: '/essays/time-the-one-currency-that-cannot-be-earned.jpg',
     description: 'Freedom and time are the same thing described twice. On protecting the only resource you can never get back.',
     publishedAt: '2026-04-12T15:00:00Z',
     poem: false,
@@ -3219,6 +3227,7 @@ Look up. The clouds are still moving. Some of your time is still yours. Use it f
   {
     title: 'The Product Is Great. Nobody Cares.',
     slug: 'the-product-is-great-nobody-cares',
+    cover: '/essays/the-product-is-great-nobody-cares.jpg',
     description: 'China won the manufacturing era and lost the story. Why people buy identities, not products — and what soft power really costs.',
     publishedAt: '2026-04-12T16:00:00Z',
     poem: false,
@@ -3276,6 +3285,7 @@ China has the history. It has the craft. It has, arguably, the most layered and 
   {
     title: 'Be a Hunter-Gatherer. But With Guns.',
     slug: 'be-a-hunter-gatherer-but-with-guns',
+    cover: '/essays/be-a-hunter-gatherer-but-with-guns.jpg',
     description: 'Our ancestors worked less, slept more, and were healthier than the farmers who replaced them. Take the lifestyle, not the era.',
     publishedAt: '2026-04-12T17:00:00Z',
     poem: false,
@@ -3345,11 +3355,18 @@ async function runImport(): Promise<{ imported: string[]; skipped: string[]; err
     // Check if slug already exists
     const { data: existing } = await supabase
       .from('works')
-      .select('id')
+      .select('id, cover_image_url')
       .eq('slug', story.slug)
       .single()
 
     if (existing) {
+      // Backfill a cover image if the work was imported before covers existed
+      if (story.cover && !existing.cover_image_url) {
+        await supabase
+          .from('works')
+          .update({ cover_image_url: story.cover })
+          .eq('id', existing.id)
+      }
       skipped.push(story.title)
       continue
     }
@@ -3363,6 +3380,7 @@ async function runImport(): Promise<{ imported: string[]; skipped: string[]; err
         slug: story.slug,
         type: story.type ?? 'story',
         description: story.description,
+        cover_image_url: story.cover ?? null,
         status: 'published',
         created_at: story.publishedAt,
         updated_at: story.publishedAt,
