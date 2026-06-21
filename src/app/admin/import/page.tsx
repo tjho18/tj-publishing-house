@@ -47,8 +47,8 @@ function poemToDoc(raw: string): TipDoc {
 
 const STORIES: {
   title: string; slug: string; description: string
-  publishedAt: string; poem: boolean; type?: 'story' | 'novel' | 'essay'
-  cover?: string; content: string
+  publishedAt: string; poem: boolean; type?: 'story' | 'novel' | 'essay' | 'comic'
+  cover?: string; pageCount?: number; content: string
 }[] = [
   // ── 1. Hot Rock ─────────────────────────────────────────────────────────────
   {
@@ -3347,6 +3347,19 @@ You don't have to. Walk around the parts of the old life you don't want — the 
 
 Go find the mongongo nuts.`,
   },
+
+  // ══ COMICS ════════════════════════════════════════════════════════════════════
+  // Page images live at /comics/frog-orchestra-comic/page-NN.jpg
+  {
+    title: 'Frog Orchestra',
+    slug: 'frog-orchestra-comic',
+    description: 'A graphic narrative adapted from the short story — raw ink sketches with orange accents, thirty-one wordless pages.',
+    publishedAt: '2026-04-20T00:00:00Z',
+    poem: false,
+    type: 'comic' as const,
+    pageCount: 31,
+    content: '',
+  },
 ]
 
 // ─── Server action ────────────────────────────────────────────────────────────
@@ -3378,8 +3391,6 @@ async function runImport(): Promise<{ imported: string[]; skipped: string[]; err
       continue
     }
 
-    const doc = story.poem ? poemToDoc(story.content) : proseToDoc(story.content)
-
     const { data: work, error: workErr } = await supabase
       .from('works')
       .insert({
@@ -3388,6 +3399,7 @@ async function runImport(): Promise<{ imported: string[]; skipped: string[]; err
         type: story.type ?? 'story',
         description: story.description,
         cover_image_url: story.cover ?? null,
+        page_count: story.pageCount ?? null,
         status: 'published',
         created_at: story.publishedAt,
         updated_at: story.publishedAt,
@@ -3399,6 +3411,14 @@ async function runImport(): Promise<{ imported: string[]; skipped: string[]; err
       errors.push(`${story.title}: ${workErr?.message ?? 'unknown error'}`)
       continue
     }
+
+    // Comics are image-based and have no text chapter.
+    if (story.type === 'comic') {
+      imported.push(story.title)
+      continue
+    }
+
+    const doc = story.poem ? poemToDoc(story.content) : proseToDoc(story.content)
 
     const { error: chapErr } = await supabase.from('chapters').insert({
       work_id: work.id,
