@@ -407,7 +407,7 @@ The stranger turned his horse toward the horizon. The sun was settin', paintin' 
 I never saw him again.`,
   },
 
-  // ── 2. Mine ──────────────────────────────────────────────────────────────────
+  // ── 2. Mine ───────────────────────────────────────────────────────────────
   {
     title: 'Mine',
     slug: 'mine',
@@ -416,475 +416,253 @@ I never saw him again.`,
     publishedAt: '2026-04-14T10:00:00Z',
     poem: true,
     content: `After a year of living in the room on top of a book cafe, finally, I ran out of money
-
 The publishing deal they promised me was going nowhere
-
 The publishers demanded more money each week
-
 At the same time, after a decade of back and forth
-
 My parents finally cut me off
-
 My flatmate, a red-faced construction worker (the only kind we had in that building)
-
 told me about this mine not far off shore after coming home drunk one night
-
 "They don't check shit documents I'm telling you bro that's how it is" He said
-
 I took the guy's wallet and his phone when he was asleep
-
 Caught the first bus to Zhoushan and left for the ocean
 
 The place wasn't a hustle to find. It was the only one around
-
 They said the mine doesn't produce much
-
 Anyways, the government kept sending funding there because it's a part of a greater government program
-
 When I asked for a job
-
 the manager at the mine asked me if I carry any cash to bribe him
-
 He promised me an easier and better-paid position
-
 This manager was from Henan but he spoke the dialect of the locals
-
 My job was to operate this mechanical claw to carry boxes from one spot to another on the platform
-
 That was it.
-
 12 hours of this
-
 With just a 2 hours break after dinner before mandatory bedtime.
-
 After dinner, I avoided the crowd
-
 They were a bunch of local workers who spoke only the Zhoushan port dialect
-
 Anyways, I couldn't fit in here
-
 I would go on these long walks until I feel like it might be wise to sleep
-
 At times, it appeared to me that the platform was as big as a city
-
 It had its own bars, restaurants, tennis courts, and casinos just for the thousands of single men working here
-
 An old man with a hooked nose told me he hadn't been to the shore for 18 months at a time
-
 "Not much I missed back there." He explained
-
 "Everything is here.
-
 Everything you can possibly want."
 
 Three weeks in, I already got a tan
-
 Some light-skinned workers had burnt skin peeling off their back
-
 We all wore the same orange safety helmets
-
 Even though we were otherwise nearly naked
-
 in the intense heat under direct sunlight
-
 We had to keep the helmets on at all times
-
 If a manager catch you without a helmet
-
 You'd get a warning
-
 Though I had no way of knowing what a warning could do
-
 I didn't miss home at all
-
 I liked the physical labour
-
 The pain of it
-
 When my body was occupied
-
 My mind was set loose
-
 I woke up, spent all the energy from every corner of this body, this machine
-
 Then hit the bed
-
 The bed sheet started to stink of machine oil and sweat
-
 Most men on the platform had such a smell
-
 A repelling, metallic smell
-
 Soon enough, I got used to the smell
-
 Soon enough, I got used to everything
-
 I even started to speak their dialect
-
 Trimmed my hair short and kept my moustaches the way the other workers did
-
 I chugged the canned food and instant ramen I used to despise down my throat
-
 They slid into my belly and dissolved into my stomach
-
 Became a part of who I was
-
 I woke up on a red, man-made, metallic island in the middle of the Pacific Ocean every morning
-
 I got paid bi-weekly.
-
 I did a calculation:
-
 I would need to work here 7380 days straight to afford an apartment in uptown Shanghai
-
 That's 20.2 years
-
 By the time I'm 45, my parents would start to respect me
-
 I would drive a car, paid in full
-
 Next to me, a well-educated Shanghainese woman that went to hair salon and pilate classes regularly
-
 In the backseat, 2 children, a boy and a girl
-
 The boy would play piano
-
 I would be moved to tears every time he played
-
 The piano teacher, a snobby swan-like middle-aged woman would praise him:
-
 "This little one is a pure genius."
-
 To which I would reply: "Like father, like son" while delivering a satisfactory smirk
 
 Somedays, after work, my body would stop responding
-
 My legs would give out from fatigue
-
 I would sit alone at the edge of the platform
-
 And stare at the sea
-
 Except for the beams of red light on the platform
-
 All around me was darkness
-
 Heavy, boundless darkness
-
 An entire world lurked beneath my foot
-
 Water several times the size of all the continents combined
-
 Several billion people live on these continents
-
 Swerving around like ants
-
 Some of them like collecting watches
-
 Some of them were even happy
-
 A new ecosystem lay beneath me
-
 With new sets of rules, lifestyles
-
 All it takes would be just one leap
-
 It was freezing at night here on the platform
-
 My body would start to shake if I was out for too long
-
 I walked back into the grey concrete hallway to my room
-
 My toilet seat
-
 My toothbrush
-
 My bunk bed
-
 My roommate grunted as I slipped into my sheets
-
 The shaking was the worst part
-
 Subtly, waves after waves crushed onto the base of the platform
-
 The shaking never stopped
 
 One day, a fight broke out on the west deck,
-
 A young man with a skinny neck got caught stealing cigarettes from a manager
-
 The elder fellow who caught the young man was trying to tie the young man to a cargo cart
-
 The young man flipped over and cut off the man's ear with a pocketknife
-
 This soon turned into a messy twenty people brawl
-
 I watched from above
-
 From the operating room of the crane
-
 In the air, on my own, in a concealed metal box
-
 I started to laugh
-
 Clapped my hands
-
 And began to tear up
-
 From now on,
-
 This was it
-
 there was nowhere for me to go to from here
 
+
 After the first two months, I was hit with a heart-torching load of loneliness
-
 A detachment from the person who I assumed to be me
-
 On the platform, I became something else
-
 Deep down
-
 there was a sadness inside every one of the workers here
-
 This was not a language barrier, nor a cultural barrier
-
 They smiled a lot, and all fully functional
-
 A psychologist might even look at them and say they were healthy
-
 under their tanned skin, cracked lips, bacteria infected skin
-
 There
-
 lurked a mark of rejection
-
 Maybe I didn't reject the society
-
 The society rejected me,
-
 The society rejected us
-
 That was why we were all here, in the middle of nothingness
-
 Sons of the ocean
 
 In the morning, in the communal shower
-
 I saw my face, dark, lean, solemn
-
 Identical to any other faces around me
-
 My skin started to sag on my body
-
 I didn't recognize any of this
-
 I moved my arm around to check the reflection in the mirror was, indeed, mine
-
 I walked close to the mirror
-
 And stared at my face
-
 I had never noticed the pores on my cheeks
-
 I could see them now
 
 It was a Friday afternoon when I saw the thing our mine pushed out
-
 Through the opening of the coal mixer machine
-
 a dark liquid started to overflow
-
 I climbed down to the base of my crane
-
 No one else was paying attention to this
-
 The managers were halfway across the platform
-
 I was the only one on the operating platform
-
 I walked next to the opening and peeked down
-
 Something pale and milky emerged from the black coal
-
 It reflected brightly from the direct midday sun
-
 My sweat dripped from my neck into the coal mix
-
 It was then I realized what was inside the coal mix
-
 I bend down, unclipped my helmet and put my hand into the opening
-
 Using every bit of strength left in me,
-
 I grabbed the hand and dragged out the body
-
 In my arm, laid a man I could only describe as flawless
-
 A flawless specimen of human
-
 With a face familiar to mine
-
 I dragged me out of the coal mixer
-
 The flawless me, entirely naked like a newborn
-
 His body was cold, dead
-
 But soon enough, lying on the red, metallic platform, boiling with heat, he started to move
-
 First a finger, then the wrists
-
 Then the eyes
-
 my eyes
-
 Silently, he got up in one graceful move
-
 He put on each item of my clothes while I undress
-
 When I got entirely naked, we switched places
-
 he made an inviting gesture, pointing at the opening of the coal mixer
-
 The coal mixer spun slowly, but surely
-
 a seagull flapped its wings across the sky
-
 I jumped in
 
+
 At first, all I saw were jellyfishes
-
 Tiny transparent single-celled ballons
-
 floating all around me, contracting and expanding
-
 Emerged in the ocean
-
 I was numb
-
 In a blissful way
-
 I didn't know how much time had passed in this state
-
 Gently I was pushed to a shore
-
 After what felt like a million years
-
 In a half-asleep, half-awake slumber at the bottom of the world
-
 Carried up by waves
-
 Dragged onto the muddy beach covered by seaweed and algae
-
 The villager boys that found me
-
 carried my naked body to their cabin
-
 The kids screamed, pointing at my hairy balls
-
 The sun was shining blindingly
-
 I squinted through my eyelids
-
 The smell of the kitchen was sharp and overwhelming
-
 I realized I hadn't heard a sound or seen a light in ages
-
 Earth spat me out
 
 I looked into a mirror the first chance I got
-
 My body's aching sensations were correct
-
 Where my face used to be was now replaced by a saggy, sad mask
-
 Wrinkles and folds exploded on every corner of this face
-
 I practiced to smile
-
 At night, I sneaked for the door and ran off, taking the villagers' wallets and a baggy blue T-shirt
-
 I got on a cab, then a boat
-
 I was back on the mining platform in no time
 
 When I saw the dark and familiar man with the orange helmet
-
 I walked up to him
-
 In silence, we undressed and put on each other's clothes
-
 He was aged too, looking no younger than fifty
-
 Where the flawless pale skin used to be was painted over with a harsh and charcoaled tan
-
 He was the oldest worker here
-
 For twenty years he never took a day off
-
 Slowly, one step after another, we walked up to the mine mixer
-
 It looked just like decades ago when we first switched places
-
 The mine mixer was still spinning very slowly
-
 He looked around
-
 Making sure no one else was around,
-
 He smiled at me
-
 Then dived into the mixer
 
 In a year, I bought two apartments near Jing'An district in Shanghai and a decent Japanese car
-
 Through a friend of a new friend, I married a 35 years old kindergarten teacher
-
 Her husband had died in a car accident a few years back
-
 When she smiled, she had one single dimple on her left cheek
-
 The wedding was hosted in a reputable hotel venue in Pudong
-
 There was barely anyone from my side of the family
-
 I never called my parents because I suspect they probably passed away of old age when I was away
-
 I told my mother-in-law that I had been in the Netherlands for the past twenty or so years
-
 That I was from Shanghai, yes, but I went to school in Australia,
-
 That my parents worked in the Chinese embassy there
-
 That they died of cancer one after another
-
 I had made a fortune in the Aussie banking business
-
 We had our first child in the second year of our marriage
-
 It was a boy
-
 I named him 'Tai-yang' meaning 'the sun'
-
 We led a quiet life, my wife and I
-
 I told her I've got enough money for us to live like this in Shanghai for the rest of our life
-
 I put some money aside to raise our boy well
-
 Other than that, I lived simply
-
 Ate home-made food and enjoyed no luxury
-
 In my leisure time I dance and listen to comedy specials
-
 At times, I still think about the other me, what sort of life he embarked on the mining platform for twentyish years
-
 But soon enough, I stopped caring
-
 I watered my plants and coloured my walls
-
 On Sunday afternoons I would go to a book cafe and read`,
   },
 
@@ -3387,17 +3165,31 @@ async function runImport(): Promise<{ imported: string[]; skipped: string[]; err
 
   const existingBySlug = new Map((existingRows ?? []).map(r => [r.slug, r]))
 
-  // Backfill covers onto already-imported works that are missing one.
+  // For already-imported works: backfill a missing cover, and re-sync the
+  // managed chapter's text so content edits in this file take effect. The
+  // chapter update targets the importer-created `<slug>-ch` chapter only, so
+  // multi-chapter works (e.g. The Boy and the Sea) are left untouched.
   for (const story of STORIES) {
     const ex = existingBySlug.get(story.slug)
     if (!ex) continue
     skipped.push(story.title)
+
     if (story.cover && !ex.cover_image_url) {
       const { error } = await supabase
         .from('works')
         .update({ cover_image_url: story.cover })
         .eq('id', ex.id)
       if (error) errors.push(`${story.title} (cover): ${error.message}`)
+    }
+
+    if (story.type !== 'comic') {
+      const doc = story.poem ? poemToDoc(story.content) : proseToDoc(story.content)
+      const { error } = await supabase
+        .from('chapters')
+        .update({ content: doc })
+        .eq('work_id', ex.id)
+        .eq('slug', `${story.slug}-ch`)
+      if (error) errors.push(`${story.title} (content): ${error.message}`)
     }
   }
 
