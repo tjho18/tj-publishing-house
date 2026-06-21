@@ -1,6 +1,10 @@
 import { createClient } from '@/lib/supabase/server'
 import { AdminLayout } from '@/components/admin/AdminLayout'
 import { redirect } from 'next/navigation'
+import { ImportSubmit } from './ImportSubmit'
+
+// Give the bulk import room to finish well within the function limit.
+export const maxDuration = 60
 
 // ─── TipTap helpers ──────────────────────────────────────────────────────────
 
@@ -3371,73 +3375,79 @@ async function runImport(): Promise<{ imported: string[]; skipped: string[]; err
   const skipped: string[] = []
   const errors: string[] = []
 
+  // One query to find everything that already exists (avoids ~50 round-trips).
+  const { data: existingRows, error: lookupErr } = await supabase
+    .from('works')
+    .select('id, slug, cover_image_url')
+    .in('slug', STORIES.map(s => s.slug))
+
+  if (lookupErr) {
+    return { imported, skipped, errors: [`lookup failed: ${lookupErr.message}`] }
+  }
+
+  const existingBySlug = new Map((existingRows ?? []).map(r => [r.slug, r]))
+
+  // Backfill covers onto already-imported works that are missing one.
   for (const story of STORIES) {
-    // Check if slug already exists
-    const { data: existing } = await supabase
-      .from('works')
-      .select('id, cover_image_url')
-      .eq('slug', story.slug)
-      .single()
-
-    if (existing) {
-      // Backfill a cover image if the work was imported before covers existed
-      if (story.cover && !existing.cover_image_url) {
-        await supabase
-          .from('works')
-          .update({ cover_image_url: story.cover })
-          .eq('id', existing.id)
-      }
-      skipped.push(story.title)
-      continue
-    }
-
-    const { data: work, error: workErr } = await supabase
-      .from('works')
-      .insert({
-        title: story.title,
-        slug: story.slug,
-        type: story.type ?? 'story',
-        description: story.description,
-        cover_image_url: story.cover ?? null,
-        page_count: story.pageCount ?? null,
-        status: 'published',
-        created_at: story.publishedAt,
-        updated_at: story.publishedAt,
-      })
-      .select('id')
-      .single()
-
-    if (workErr || !work) {
-      errors.push(`${story.title}: ${workErr?.message ?? 'unknown error'}`)
-      continue
-    }
-
-    // Comics are image-based and have no text chapter.
-    if (story.type === 'comic') {
-      imported.push(story.title)
-      continue
-    }
-
-    const doc = story.poem ? poemToDoc(story.content) : proseToDoc(story.content)
-
-    const { error: chapErr } = await supabase.from('chapters').insert({
-      work_id: work.id,
-      title: story.title,
-      slug: `${story.slug}-ch`,
-      order_num: 1,
-      status: 'published',
-      content: doc,
-      created_at: story.publishedAt,
-      updated_at: story.publishedAt,
-    })
-
-    if (chapErr) {
-      errors.push(`${story.title} (chapter): ${chapErr.message}`)
-    } else {
-      imported.push(story.title)
+    const ex = existingBySlug.get(story.slug)
+    if (!ex) continue
+    skipped.push(story.title)
+    if (story.cover && !ex.cover_image_url) {
+      const { error } = await supabase
+        .from('works')
+        .update({ cover_image_url: story.cover })
+        .eq('id', ex.id)
+      if (error) errors.push(`${story.title} (cover): ${error.message}`)
     }
   }
 
+  // Bulk-insert everything new in a single call.
+  const toInsert = STORIES.filter(s => !existingBySlug.has(s.slug))
+  if (toInsert.length === 0) {
+    return { imported, skipped, errors }
+  }
+
+  const { data: newWorks, error: insErr } = await supabase
+    .from('works')
+    .insert(toInsert.map(s => ({
+      title: s.title,
+      slug: s.slug,
+      type: s.type ?? 'story',
+      description: s.description,
+      cover_image_url: s.cover ?? null,
+      page_count: s.pageCount ?? null,
+      status: 'published',
+      created_at: s.publishedAt,
+      updated_at: s.publishedAt,
+    })))
+    .select('id, slug')
+
+  if (insErr || !newWorks) {
+    return { imported, skipped, errors: [...errors, `insert works failed: ${insErr?.message ?? 'unknown'}`] }
+  }
+
+  const idBySlug = new Map(newWorks.map(w => [w.slug, w.id]))
+
+  // Chapters for every new text work (comics are image-based, no chapter).
+  const chapterRows = toInsert
+    .filter(s => s.type !== 'comic')
+    .map(s => ({
+      work_id: idBySlug.get(s.slug),
+      title: s.title,
+      slug: `${s.slug}-ch`,
+      order_num: 1,
+      status: 'published',
+      content: s.poem ? poemToDoc(s.content) : proseToDoc(s.content),
+      created_at: s.publishedAt,
+      updated_at: s.publishedAt,
+    }))
+
+  if (chapterRows.length) {
+    const { error: chapErr } = await supabase.from('chapters').insert(chapterRows)
+    if (chapErr) errors.push(`insert chapters failed: ${chapErr.message}`)
+  }
+
+  toInsert.forEach(s => imported.push(s.title))
   return { imported, skipped, errors }
 }
 
@@ -3476,17 +3486,15 @@ export default async function ImportPage() {
           ))}
         </div>
 
-        <ImportButton action={runImport} />
+        <ImportButton />
       </div>
     </AdminLayout>
   )
 }
 
-// ─── Client button (needs interactivity for result display) ──────────────────
+// ─── Import form — submits to the server action, then redirects to dashboard ──
 
-function ImportButton({ action }: { action: () => Promise<{ imported: string[]; skipped: string[]; errors: string[] }> }) {
-  // We'll use a plain form — the result redirect happens server-side
-  // For richer feedback, we keep it simple: submit → redirect to /admin
+function ImportButton() {
   return (
     <form
       action={async () => {
@@ -3495,13 +3503,7 @@ function ImportButton({ action }: { action: () => Promise<{ imported: string[]; 
         redirect('/admin')
       }}
     >
-      <button
-        type="submit"
-        className="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-opacity hover:opacity-85"
-        style={{ fontFamily: "'Inter', sans-serif", backgroundColor: 'var(--text)', color: 'var(--bg)' }}
-      >
-        Import {STORIES.length} works →
-      </button>
+      <ImportSubmit count={STORIES.length} />
     </form>
   )
 }
